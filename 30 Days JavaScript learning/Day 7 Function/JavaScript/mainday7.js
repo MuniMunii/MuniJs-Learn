@@ -570,19 +570,174 @@ function random7Id(Number){
 }
 console.log(random7Id(7));
 
-//No 32
+//No 32 
+//Masalah dan solusi di Nomor ini
 function randomIdGenerator() {
     const randomNum='1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
+    // Pertama kita casting dulu agar menjadi integer
     let enterId=parseInt(prompt("How many Id You Want to show"));
     let enterChar=parseInt(prompt("How Many Characters You want"));
-    let id=''
     let Result=document.getElementById('resultIdGenerator');
+    let id=''
+    // Kita Buat Nested For yang for pertama kita buat untuk id
     for (let i = 0; i < enterId; i++) {
+        // Yang kedua untuk berapa char nya
         for (let j = 0; j < enterChar; j++) {
             let RandomNumber=Math.floor(Math.random()*randomNum.length);
             id += randomNum[RandomNumber]
         }
+        // Dan kita tambahkan di for id \n agar ke line baru di setiap id nya
         id += '\n'
     }
+    // kita tidak memakai return karna ini akan di tampilan di dalam web
     Result.innerHTML=id;
 }
+
+//No 33
+function rgbGenerator(){
+    let RGB=''
+    for (let i = 0; i < 3; i++) {
+        let rgbRandom=Math.floor(Math.random()*256)
+        RGB+=rgbRandom
+        if (i<2) {
+            RGB+=','
+        }
+    }
+    // Gunakan Return juga bisa jika ingin console.log di luar function
+    // return `RGB(${RGB})`
+    console.log(`RGB(${RGB})`);
+}
+rgbGenerator()
+
+//No 34
+function hexaArrayGenerator(){
+    let hexaArray=[]
+    let hexaNum=('0123456789abcdef')
+    for (let i = 0; i < 6; i++) {
+        let hexaNumRandom=Math.floor(Math.random()*hexaNum.length);
+        hexaArray.push(hexaNum[hexaNumRandom])
+    }
+    console.log(hexaArray);
+}
+hexaArrayGenerator()
+
+//No 35
+function rgbGeneratorArray() {
+    let rgbArray=[]
+    for (let i = 0; i < 3; i++) {
+        let rgbrandom=Math.floor(Math.random()*256);
+        rgbArray.push(rgbrandom)
+    }
+    console.log(rgbArray);
+}
+rgbGeneratorArray()
+
+//No 36 
+// masalah dan solusi di Nomor ini
+// Sebenernya ada cara lebih mudah dengan menginstal npm hexconverter
+// tetapi karna blom di ajarin di materi sebelum nya jadi kita gak pake package nya
+function convertHextoRGB(r,g,b) {
+    // Ini mendefinisikan sebuah fungsi bernama toHex dengan menggunakan sintaksis arrow function.
+    let toHex=(value)=>{
+        // disini kita mengubah value ke tostring(16)karna angka hexadecimal ada 16
+        const Hex=value.toString(16);
+        // ini kita memakai ternary operator fungsi nya sama kaya if else
+        // kalo panjang hex sama dengan 1 maka akan di tambahkan 0 dan di tambah Hex (0f) jika salah hanya variable hex saja yang akan muncul (f)
+        return Hex.length === 1 ? '0' + Hex : Hex;
+    }
+    let red=toHex(r)
+    let green=toHex(g)
+    let blue=toHex(b)
+    return '#'+red+green+blue
+}
+console.log(convertHextoRGB(255,128,0));
+
+//No 37 masalah dan solusi di nomor ini
+function hexaToRGBWeb() {
+    let hexaNumber=document.getElementById('hexaNumber').value;
+    // Pertama kita hapuskan dulu lambang # dengan menggunakan method replace
+    hexaNumber=hexaNumber.replace('#','');
+    let result=document.getElementById('resultHexaRGB');
+    
+    // kita parseint semua variable nya dan kita extraks string nya dari index (0,2) dan parameter nya 16
+    // jadi misalkan #ff8000 index 0 sampai 2 nya di ekstrak jadi ff nah ff nya di jadikan Integer
+    const r=parseInt(hexaNumber.substring(0,2),16);
+    const g=parseInt(hexaNumber.substring(2,4),16);
+    const b=parseInt(hexaNumber.substring(4,6),16);
+
+    return result.innerHTML=`RGB(${r},${g},${b})`;
+}
+
+// No 38
+// masalah dan solusi di Nomor ini
+function generateColor(Type,Hmuch){
+    let arrayHex=[];
+    let arrayRGB=[];
+    const hexaNum=('0123456789abcdef')
+    if (Type==='hex') {
+        for (let i = 0; i < Hmuch; i++) {
+            let idHex='#';
+            for (let j = 0; j < 6; j++) {
+                let randomHexNum=Math.floor(Math.random()*hexaNum.length);
+                idHex+=hexaNum[randomHexNum]
+            }
+            arrayHex.push(idHex)
+        }
+        return arrayHex
+    }
+    // disini awal nya bingung tapi solusi nya ternyata
+    else if(Type==='rgb'){
+        // hanya buat math random di masing kata rgb 
+        // kesalahan awal memakai nested for loop dan gak dipisah nanti hasil nya akan selalu berkelipatan
+        // dan bakal hasil nya lebih dari 100 kata gak sesuai dengan Hmuch 
+        for (let i = 0; i < Hmuch; i++) {
+            let r=Math.floor(Math.random()*256);
+            let g=Math.floor(Math.random()*256);
+            let b=Math.floor(Math.random()*256);
+            arrayRGB.push(`RGB(${r},${g},${b})`)
+        }
+        return arrayRGB
+    }
+}
+console.log(generateColor('rgb',4));
+
+// No 39
+function shuffleArray(Array) {
+    let emptyArray=[]
+    for (let i = 0; i < Array.length; i++) {
+        let shufflingArray=Math.floor(Math.random()*Array.length);
+        emptyArray.push(shufflingArray)
+    }
+    return emptyArray
+}
+let arrayShuffleExample=[1,2,3,4,5]
+console.log(shuffleArray(arrayShuffleExample));
+
+//No 40
+// Solusi di nomor ini tinggal memakai *=
+function factorialNumber(Number) {
+    let factorialNum=1
+    for (let i = 1; i <= Number; i++) {
+        factorialNum *= i
+    }
+    return factorialNum
+}
+
+console.log(factorialNumber(5));
+
+//No 41
+function isEmpty(Arrays){
+    if(Arrays.length===0){
+        return 'Empty Array'
+    }
+    else{
+        for (const ArrayI of Arrays) {
+            if (ArrayI===null||ArrayI===undefined||ArrayI==='') {
+                return 'There is array with empty value'
+            }
+        }
+    }
+    return 'There is no emptyArray'
+}
+let emptyArray=[]
+console.log(isEmpty(emptyArray));
