@@ -774,7 +774,7 @@ function checkTypeAndSum(Array){
     let Num=0
     // Kita buat percabangan dengan kondisi Array.some
     // Method some ini untuk ngecek elemen di array apakah cocok/tidak,method ini mirip dengan includes bisa di cek di google untuk melliat perbedaan nya
-    // dan kita chech apakah typeof item nya !== tidak sama dengan number maka akan return tidak bisa
+    // dan kita check apakah typeof item nya !== tidak sama dengan number maka akan return tidak bisa
     if (Array.some(item => typeof item !=='number')) {
         return 'sorry we cannot sum the array because invalid type'
     }
@@ -825,7 +825,8 @@ console.log(modifyArray('Avocado', 'Tomato', 'Potato','Mango', 'Lemon','Carrot')
 console.log(modifyArray('Google', 'Facebook','Apple', 'Amazon','Microsoft', 'IBM'));
 console.log(modifyArray('Google', 'Facebook','Apple', 'Amazon'));
 
-//No 46
+//No 46 Solusi nya sama seperti yang ada di Day 6 No 9
+// Bedanya ini hanya mengecek 1 number di web dan di day 6 menghitung nya di dalam loop for
 function primeCalcWeb(){
     let numberPrime=parseInt(document.getElementById('numberPrime').value);
     let Result=document.getElementById('resultPrime')
@@ -849,3 +850,73 @@ function primeCalcWeb(){
         }
     }
 }
+
+//No 47
+//Ini hasil GPT tapi akan di jelaskan karna kita blon di ajarkan memakai konstruktor set
+function checkUnique(Array) {
+    // Kita gunakan constructor set dan masukan parameter function ke dalam argumen nya
+    const uniqueArray=new Set(Array);
+    // dan kita banding kan dengan ukuran/size uniquearray dengan panjang array
+    return uniqueArray.size===Array.length;
+}
+// jika gak ada array yang duplikat makan hasil nya true
+let arrayUnique1=[1,2,3,4,5];
+// dan jika ada duplikat maka hasil false
+let arrayUnique2=[1,2,2,2,2];
+console.log(checkUnique(arrayUnique1));
+console.log(checkUnique(arrayUnique2));
+
+// no 48
+function checkSamedataType(Array) {
+    // Pertama kita simpan dulu array dengan index awal memakai typeof di index 0
+    let firstdata=typeof Array[0]
+    // kita iterasi mulai dari 1 karna 0 sudah di pakai di first data
+    for (let i = 1; i < Array.length; i++) {
+        // gunakan kondisi tidak sama dengan dan jangan lupa akses array nya dlu pakai iterasi
+        if (typeof Array[i] !== firstdata) {
+            return 'Type data Is not the same'
+        }
+    }
+    return 'data is the same'
+}
+console.log(checkSamedataType(arrayUnique1));
+console.log(checkSamedataType(arrayChars));
+
+//No 49
+function checkVariable(Var){
+    if(typeof Var === 'symbol'){
+        return 'Variable is invalid'
+    }
+    else{
+        return 'You can use this variable'
+    }
+}
+var helloWorld='hi Sir'
+var Invalid$=Symbol(Invalid$)
+console.log(checkVariable(Invalid$));
+
+//No 50 ini cara pertama cara yang bener nya menggunakan while karna
+// kalo make cara ini length yang akan di hasilkan ga tetap 7 tetapi random
+function sevenRandomNumberUnique(){
+    let emptyArray=new Set()
+    for (let i = 0; i <= 7; i++) {
+        let randomNum=Math.floor(Math.random()*10)
+        emptyArray.add(randomNum)
+    }
+    return Array.from(emptyArray)
+}
+console.log(sevenRandomNumberUnique());
+
+//No 50 while
+// kalo memakai while tetap karna condisi perulangan nya sudah tetap 
+function sevenRandomNumberUniqueWhile() {
+    let emptyArray=new Set()
+    while (emptyArray.size < 7) {
+        let randomNum=Math.floor(Math.random()*10)
+        emptyArray.add(randomNum)
+    }
+    return Array.from(emptyArray)
+}
+console.log(sevenRandomNumberUniqueWhile());
+
+//No 51 ku taro di day 6 file mainday6

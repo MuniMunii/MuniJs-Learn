@@ -447,3 +447,10 @@ for (const countries of countriesNew) {
     reversedAndUpCountries.push(countries.toUpperCase())
 }
 console.log(reversedAndUpCountries.reverse());
+
+//Day 7 No 51
+function reverseCountries(Arrays) {
+    let countriesCopy=Arrays.slice()
+    return countriesCopy.sort().reverse()
+}
+console.log(reverseCountries(countriesNew));
