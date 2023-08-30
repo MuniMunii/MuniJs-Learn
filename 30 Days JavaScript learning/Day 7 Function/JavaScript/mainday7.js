@@ -725,19 +725,127 @@ function factorialNumber(Number) {
 
 console.log(factorialNumber(5));
 
-//No 41
+//No 41 solusi dan masalah di nomor ini
 function isEmpty(Arrays){
+    // Pertama Kita buat operational if dengan kondisi jika arrays.Length === 0 maka akan return array kosong
     if(Arrays.length===0){
         return 'Empty Array'
     }
     else{
+        // untuk iterator Array seperti menambahkan sum atau seperti ini di sarankan pakai For Of
         for (const ArrayI of Arrays) {
+            // Kita gunakan kondisi jika Array is Null/undifined/kosong maka akan return ada array yang value nya empty
             if (ArrayI===null||ArrayI===undefined||ArrayI==='') {
                 return 'There is array with empty value'
             }
         }
     }
+    // Jika ga ada empty value
     return 'There is no emptyArray'
 }
 let emptyArray=[]
 console.log(isEmpty(emptyArray));
+
+//No 42 Part 1
+function sumAllNumberArray(Number) {
+    let Num=0
+    for (let i = 0; i < Number.length; i++) {
+        Num+=Number[i]
+    }
+    return Num
+}
+let arrayNumber=[1,2,3,4,5]
+console.log(sumAllNumberArray(arrayNumber));
+
+//No 42 Part 2
+function sumAllNumber(Number) {
+    let Num=0
+    for (let i = 0; i <= Number; i++) {
+        Num+=i
+    }
+    return Num
+}
+
+console.log(sumAllNumber(2));
+
+//No 43
+// Masalah dan solusi di nomor ini
+function checkTypeAndSum(Array){
+    let Num=0
+    // Kita buat percabangan dengan kondisi Array.some
+    // Method some ini untuk ngecek elemen di array apakah cocok/tidak,method ini mirip dengan includes bisa di cek di google untuk melliat perbedaan nya
+    // dan kita chech apakah typeof item nya !== tidak sama dengan number maka akan return tidak bisa
+    if (Array.some(item => typeof item !=='number')) {
+        return 'sorry we cannot sum the array because invalid type'
+    }
+    else{
+        for (let i = 0; i <= Array.length; i++) {
+            Num+=Array[i]
+        }
+        return Num
+    }
+}
+
+let arrayChars=[1,3,'2','4']
+console.log(checkTypeAndSum(arrayChars));
+
+// No 44
+function checkAverage(Array) {
+    if (Array.some(item => typeof item !== 'number')) {
+        return 'Invalid Type cant check Average'
+    }
+    else{
+        let num=0
+        if (Array===0) {
+            return 0;
+        }
+        else{
+            for (let i = 0; i < Array.length; i++) {
+                num+=Array[i]
+            }
+            return num/Array.length
+        }
+    }
+}
+
+console.log(checkAverage(arrayNumber));
+
+//No 45
+function modifyArray(...Array){
+    if (Array.length <= 5) {
+        return 'Not Found'
+    }
+    let emptyArray=[]
+    for (let i = 0; i < Array.length; i++) {
+            emptyArray.push(Array[i])
+        }
+    return emptyArray
+}
+console.log(modifyArray('Avocado', 'Tomato', 'Potato','Mango', 'Lemon','Carrot'));
+console.log(modifyArray('Google', 'Facebook','Apple', 'Amazon','Microsoft', 'IBM'));
+console.log(modifyArray('Google', 'Facebook','Apple', 'Amazon'));
+
+//No 46
+function primeCalcWeb(){
+    let numberPrime=parseInt(document.getElementById('numberPrime').value);
+    let Result=document.getElementById('resultPrime')
+
+    if (numberPrime <= 1) {
+        return 'The Number Is Not Prime Number'
+    }
+    else{
+        let Prime=true
+        for (let i = 2; i < Math.sqrt(numberPrime); i++) {
+            if (numberPrime % i===0) {
+                Prime=false;
+                break;
+            }
+        }
+        if(Prime){
+            Result.innerHTML='The Number Is Prime Number'
+        }
+        else{
+            Result.innerHTML='The Number is not Prime Number'
+        }
+    }
+}
