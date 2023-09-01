@@ -122,6 +122,25 @@ const users = {
             }
         }
         return `There is ${emptyArray.length} people online`
+    },
+    // Masalah No 8
+    mernStackChecker:function(){
+        const mernStack = ['MongoDB', 'Express', 'React', 'Node']
+        let emptyArray=[]
+        for (const userName in this) {
+            if (this.hasOwnProperty(userName)&&userName!=='mernStackChecker') {
+                const skillUser=this[userName].skills
+                // Memeriksa apakah pengguna memiliki properti skills yang merupakan array.
+                if (skillUser&&Array.isArray(skillUser)) {
+                    // jadi variable ini menyimpan apakah skill users sama dengan mernstack
+                    const hasMernSkill=mernStack.every(skills=>skillUser.includes(skills))
+                    if(hasMernSkill){
+                        emptyArray.push(userName)
+                    }
+                }
+            }
+        }
+        return emptyArray
     }
 }
 
@@ -130,3 +149,39 @@ console.log(users.countPoint());
 
 //No 7
 console.log(users.countOnline());
+
+//No 8 
+console.log(users.mernStackChecker());
+
+//No 9 menggunakan assign jika ingin mengcopy dan mengubah object
+const usersRamjiCopy=Object.assign({
+    ramji:{
+        email: 'RamjiMull.com',
+        skills: ['HTML', 'CSS', 'JavaScript', 'MongoDB', 'Express', 'React', 'Node'],
+        age: 18,
+        isLoggedIn: false,
+        points: 40
+    }
+},users)
+console.log(usersRamjiCopy);
+
+//No 10
+const usersKey=Object.keys(users)
+const userKeyAlex=Object.keys(users.Alex)
+console.log(userKeyAlex);
+console.log(usersKey);
+
+//NO 11
+const valueUser=Object.values(usersRamjiCopy)
+console.log(valueUser);
+
+//No 12
+countries.forEach(country => {
+    console.log(`Country: ${country.name}`);
+    console.log(`Capital: ${country.capital}`);
+    console.log(`Population: ${country.population}`);
+    console.log(`Languages: ${country.languages.join(', ')}`);
+    console.log(`Flag: ${country.flag}`);
+    console.log(`Currency: ${country.currency}`);
+    console.log('---------------------');
+  });
