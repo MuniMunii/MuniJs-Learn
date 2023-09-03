@@ -111,7 +111,7 @@ const users = {
     // Masalah dan Solusi
     countOnline:function(){
         let emptyArray=[]
-        // untuk loop sebuah object harus Memakai for in (tergantung kondisinya juga)
+        // untuk loop sebuah object harus Memakai for in
         for (const userName in this) {
             // Akan ku jelaskan maksud dari expresi kondisi ini
             // pertama this.hasOwnProperty(username) jika property ada username dan
@@ -176,12 +176,136 @@ const valueUser=Object.values(usersRamjiCopy)
 console.log(valueUser);
 
 //No 12
-countries.forEach(country => {
-    console.log(`Country: ${country.name}`);
-    console.log(`Capital: ${country.capital}`);
-    console.log(`Population: ${country.population}`);
-    console.log(`Languages: ${country.languages.join(', ')}`);
-    console.log(`Flag: ${country.flag}`);
-    console.log(`Currency: ${country.currency}`);
-    console.log('---------------------');
-  });
+// countries.forEach(country => {
+//     console.log(`Country: ${country.name}`);
+//     console.log(`Capital: ${country.capital}`);
+//     console.log(`Population: ${country.population}`);
+//     console.log(`Languages: ${country.languages.join(', ')}`);
+//     console.log(`Flag: ${country.flag}`);
+//     console.log(`Currency: ${country.currency}`);
+//     console.log('---------------------');
+// });
+
+//No 13
+let personAccount={
+    firstName:'Ramzi',
+    lastName:'Akbar',
+    incomes:3000000,
+    expenseProperties:1000000,
+    totalIncomes:4000000,
+    totalExpenses:1000000,
+    getAccountInfo:function(){
+        return `Account Info \n${this.firstName+' '+this.lastName}\n`
+    },
+    addIncomes:function(addNum){
+        this.totalIncomes+=addNum
+        return `You Succesfully added ${addNum} To Your totalIncomes`
+    },
+    addExpenses:function(addNum){
+        this.totalExpenses+=addNum
+        return`You Succesfully added ${addNum} To Your totalExpenses`
+    },
+    getAccountBallance:function(){
+        return `Monthly Expenses=${this.expenseProperties.toLocaleString()}\nMonthly Incomes=${this.incomes.toLocaleString()}\nTotalExpenses=${this.totalExpenses.toLocaleString()}\nTotalIncomes=${this.totalIncomes.toLocaleString()}`
+    },
+    payExpenses:function(addNums) {
+        if(this.totalIncomes>=addNums){
+        this.totalIncomes-=addNums
+        this.totalExpenses-=addNums
+        return`You succesfully pay ${addNums} expenses from your total incomes`
+        }
+        else{
+            if (addNums===0||addNums===isNaN||addNums===''||addNums===undefined) {
+                return `Input The correct Number`
+            }
+            else{
+                return `Insufficient Incomes`
+            }
+        }
+    }
+}
+console.log(personAccount.getAccountInfo());
+console.log(personAccount.payExpenses(30000));
+console.log(personAccount.addIncomes(300000));
+console.log(personAccount.addExpenses(800000));
+console.log(personAccount.getAccountBallance());
+
+// Untuk Nomor 14,15,16
+const usersShop = [
+    {
+        _id: 'ab12ex',
+        username: 'Alex',
+        email: 'alex@alex.com',
+        password: '123123',
+        createdAt:'08/01/2020 9:00 AM',
+        isLoggedIn: false
+    },
+    {
+        _id: 'fg12cy',
+        username: 'Asab',
+        email: 'asab@asab.com',
+        password: '123456',
+        createdAt:'08/01/2020 9:30 AM',
+        isLoggedIn: true
+    },
+    {
+        _id: 'zwf8md',
+        username: 'Brook',
+        email: 'brook@brook.com',
+        password: '123111',
+        createdAt:'08/01/2020 9:45 AM',
+        isLoggedIn: true
+    },
+    {
+        _id: 'eefamr',
+        username: 'Martha',
+        email: 'martha@martha.com',
+        password: '123222',
+        createdAt:'08/01/2020 9:50 AM',
+        isLoggedIn: false
+    },
+    {
+        _id: 'ghderc',
+        username: 'Thomas',
+        email: 'thomas@thomas.com',
+        password: '123333',
+        createdAt:'08/01/2020 10:00 AM',
+        isLoggedIn: false
+    },
+    {
+    signUP:function(){
+        
+    }
+    }
+    ];
+
+    const products = [
+{
+    _id: 'eedfcf',
+    name: 'mobile phone',
+    description: 'Huawei Honor',
+    price: 200,
+    ratings: [
+    { userId: 'fg12cy', rate: 5 },
+    { userId: 'zwf8md', rate: 4.5 }
+    ],
+    likes: []
+},
+{
+    _id: 'aegfal',
+    name: 'Laptop',
+    description: 'MacPro: System Darwin',
+    price: 2500,
+    ratings: [],
+    likes: ['fg12cy']
+},
+{
+    _id: 'hedfcg',
+    name: 'TV',
+    description: 'Smart TV:Procaster',
+    price: 400,
+    ratings: [{ userId: 'fg12cy', rate: 5 }],
+    likes: ['fg12cy']
+}
+]
+

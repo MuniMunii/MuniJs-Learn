@@ -2012,12 +2012,3 @@ const countries = [
     },
   ]
 
-  countries.forEach(country => {
-    console.log(`Country: ${country.name}`);
-    console.log(`Capital: ${country.capital}`);
-    console.log(`Population: ${country.population}`);
-    console.log(`Languages: ${country.languages.join(', ')}`);
-    console.log(`Flag: ${country.flag}`);
-    console.log(`Currency: ${country.currency}`);
-    console.log('---------------------');
-  });
