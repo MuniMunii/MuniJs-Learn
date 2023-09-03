@@ -111,7 +111,7 @@ const users = {
     // Masalah dan Solusi
     countOnline:function(){
         let emptyArray=[]
-        // untuk loop sebuah object harus Memakai for in
+        // untuk loop didalam object harus Memakai for in kalo diluar bisa gunakan loop lain seperti for of. DLL
         for (const userName in this) {
             // Akan ku jelaskan maksud dari expresi kondisi ini
             // pertama this.hasOwnProperty(username) jika property ada username dan
