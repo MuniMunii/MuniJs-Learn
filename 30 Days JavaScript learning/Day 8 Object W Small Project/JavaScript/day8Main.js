@@ -275,8 +275,8 @@ const usersShop = [
     {
         // No 14 Part A 
         // Akan ku jelaskan Masalah dan solusi di codingan ini
-        // kita buat parameter function nya dulu kaya username,pw,isLoggedIn bisa di isi/gak bebas karna cuma hiasan online/gk nya
-    signUP:function(username,email,password,isLoggedIn){
+        // kita buat parameter function nya dulu kaya username dan pw
+    signUP:function(username,email,password){
         //method some ini agar ngecek apakah salah satu array nya ada yang cocok dengan kondisi yang diberikan
         //bedanya sama includes kalo includes return nya akan boolean
         let existUser=usersShop.some(usersShop=>usersShop.email===email);
