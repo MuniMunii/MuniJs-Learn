@@ -111,7 +111,7 @@ const users = {
     // Masalah dan Solusi
     countOnline:function(){
         let emptyArray=[]
-        // untuk loop didalam object harus Memakai for in kalo diluar bisa gunakan loop lain seperti for of. DLL
+        // untuk loop sebuah object harus Memakai for in
         for (const userName in this) {
             // Akan ku jelaskan maksud dari expresi kondisi ini
             // pertama this.hasOwnProperty(username) jika property ada username dan
@@ -273,8 +273,63 @@ const usersShop = [
         isLoggedIn: false
     },
     {
-    signUP:function(){
-        
+        // No 14 Part A 
+        // Akan ku jelaskan Masalah dan solusi di codingan ini
+        // kita buat parameter function nya dulu kaya username,pw,isLoggedIn bisa di isi/gak bebas karna cuma hiasan online/gk nya
+    signUP:function(username,email,password,isLoggedIn){
+        //method some ini agar ngecek apakah salah satu array nya ada yang cocok dengan kondisi yang diberikan
+        //bedanya sama includes kalo includes return nya akan boolean
+        let existUser=usersShop.some(usersShop=>usersShop.email===email);
+        // Ini jika di object userShop ada email Yang sama/buat 2 akun maka akan return tanpa nilai/gak masuk ke array
+        if (existUser) {
+            console.log('User Already Exist');
+            return
+        }
+        // ini untuk random id nya biar kaya contoh array diatas karna ada _id
+        let ranNum='1234567890asdfghjklqwertyuiopzxcvbnmQWERTYIOPASDFGHJKLZXCVBNM'
+        let idSix=''
+        for (let i = 0; i <= 6; i++) {
+            let randomSixNum=Math.floor(Math.random()*ranNum.length)
+            idSix+=ranNum[randomSixNum]
+        }
+        // Date Function
+        let newDate=new Date();
+        let newDays=newDate.getDay();
+        let newMonth=newDate.getMonth();
+        let newYear=newDate.getFullYear();
+        let newHours=newDate.getHours();
+        let newMinutre=newDate.getMinutes();
+        // ini kita make ternary function biar simple, nentuin waktu zone nya 
+        let Timezone=newHours >= 12 ?'AM':'PM'
+        let Times=`${newDays}/${newMonth}/${newYear} ${newHours}:${newMinutre} ${Timezone}`
+        // Assigning Objectnya
+        // kita make unshift jadi array yang baru nya akan masuk dari awal index
+        // kesalahan tadi make push nanti buat ambil index function signUP nya susah dan gak efektif
+        usersShop.unshift(Object.assign({
+            _id:idSix,
+            username,
+            email,
+            password,
+            createdAt:Times,
+            isLoggedIn:false
+        },this))
+    }
+    },
+    //No 14 Part B
+    // masalah yang ku alami disini
+    {
+        signIN:function(user,pw){
+        // kita pake method find dulu untuk mencari username yang sama dengan parameter user
+        let existUser=usersShop.find((usersShop)=>usersShop.username===user);
+        // kita buat expresi kondisi jika existuser dan pw nya sama dengan object existuser.pw maka akan true
+        if (existUser&&pw===existUser.password) {
+            // jika berhasil maka object isloggedin akan menjadi True kan tadi pas signUp masi False
+            existUser.isLoggedIn=true
+            return 'You can Access Now'
+        }
+        else{
+            return 'Wrong Password'
+        }
     }
     }
     ];
@@ -308,4 +363,18 @@ const usersShop = [
     likes: ['fg12cy']
 }
 ]
+// No 14 Part A function di line 276
+// Mungkin solusi agar mencari last index ini kurang efektif 
+// tapi hanya ini cara yang terpikirkan 
+const signUpindex=usersShop.length-2
+const functionSignup=usersShop[signUpindex]
+functionSignup.signUP('Ramzi','Ramzi03311@gmail.com','sirRamjier')
+// ini contoh agar kita gak bisa buat akun dengan email yang sama bisa di liat di code function nya
+functionSignup.signUP('Ramzi','Ramzi03311@gmail.com','sirRamjier')
+console.log(Array.from(usersShop.values()));
 
+//No 15
+//Code nya di Nomor 319
+const signInIndex=usersShop.length-1
+const functionSignIn=usersShop[signInIndex]
+console.log(functionSignIn.signIN('Ramzi','sirRamjier'));
