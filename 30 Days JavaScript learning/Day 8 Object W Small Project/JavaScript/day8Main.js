@@ -232,6 +232,65 @@ console.log(personAccount.getAccountBallance());
 
 // Untuk Nomor 14,15,16
 const usersShop = [
+        // No 14 Part A 
+        // Akan ku jelaskan Masalah dan solusi di codingan ini
+        // kita buat parameter function nya dulu kaya username,pw,isLoggedIn bisa di isi/gak bebas karna cuma hiasan online/gk nya
+        {signUP:function(username,email,password){
+            //method some ini agar ngecek apakah salah satu array nya ada yang cocok dengan kondisi yang diberikan
+            //bedanya sama includes kalo includes return nya akan boolean
+            let existUser=usersShop.some(usersShop=>usersShop.email===email);
+            // Ini jika di object userShop ada email Yang sama/buat 2 akun maka akan return tanpa nilai/gak masuk ke array
+            if (existUser) {
+                console.log('User Already Exist');
+                return
+            }
+            // ini untuk random id nya biar kaya contoh array diatas karna ada _id
+            let ranNum='1234567890asdfghjklqwertyuiopzxcvbnmQWERTYIOPASDFGHJKLZXCVBNM'
+            let idSix=''
+            for (let i = 0; i <= 6; i++) {
+                let randomSixNum=Math.floor(Math.random()*ranNum.length)
+                idSix+=ranNum[randomSixNum]
+            }
+            // Date Function
+            let newDate=new Date();
+            let newDays=newDate.getDay();
+            let newMonth=newDate.getMonth();
+            let newYear=newDate.getFullYear();
+            let newHours=newDate.getHours();
+            let newMinutre=newDate.getMinutes();
+            // ini kita make ternary function biar simple, nentuin waktu zone nya 
+            let Timezone=newHours >= 12 ?'AM':'PM'
+            let Times=`${newDays}/${newMonth}/${newYear} ${newHours}:${newMinutre} ${Timezone}`
+            // Assigning Objectnya
+            // kita make unshift jadi array yang baru nya akan masuk dari awal index
+            // kesalahan tadi make push nanti buat ambil index function signUP nya susah dan gak efektif
+            usersShop.push(Object.assign({
+                _id:idSix,
+                username,
+                email,
+                password,
+                createdAt:Times,
+                isLoggedIn:false
+            },this))
+        }
+        },
+        //No 14 Part B
+        // masalah yang ku alami disini
+        {
+            signIN:function(user,pw){
+            // kita pake method find dulu untuk mencari username yang sama dengan parameter user
+            let existUser=usersShop.find((usersShop)=>usersShop.username===user);
+            // kita buat expresi kondisi jika existuser dan pw nya sama dengan object existuser.pw maka akan true
+            if (existUser&&pw===existUser.password) {
+                // jika berhasil maka object isloggedin akan menjadi True kan tadi pas signUp masi False
+                existUser.isLoggedIn=true
+                return 'You can Access Now'
+            }
+            else{
+                return 'Wrong Password'
+            }
+        }
+        },
     {
         _id: 'ab12ex',
         username: 'Alex',
@@ -272,69 +331,43 @@ const usersShop = [
         createdAt:'08/01/2020 10:00 AM',
         isLoggedIn: false
     },
-    {
-        // No 14 Part A 
-        // Akan ku jelaskan Masalah dan solusi di codingan ini
-        // kita buat parameter function nya dulu kaya username dan pw
-    signUP:function(username,email,password){
-        //method some ini agar ngecek apakah salah satu array nya ada yang cocok dengan kondisi yang diberikan
-        //bedanya sama includes kalo includes return nya akan boolean
-        let existUser=usersShop.some(usersShop=>usersShop.email===email);
-        // Ini jika di object userShop ada email Yang sama/buat 2 akun maka akan return tanpa nilai/gak masuk ke array
-        if (existUser) {
-            console.log('User Already Exist');
-            return
-        }
-        // ini untuk random id nya biar kaya contoh array diatas karna ada _id
-        let ranNum='1234567890asdfghjklqwertyuiopzxcvbnmQWERTYIOPASDFGHJKLZXCVBNM'
-        let idSix=''
-        for (let i = 0; i <= 6; i++) {
-            let randomSixNum=Math.floor(Math.random()*ranNum.length)
-            idSix+=ranNum[randomSixNum]
-        }
-        // Date Function
-        let newDate=new Date();
-        let newDays=newDate.getDay();
-        let newMonth=newDate.getMonth();
-        let newYear=newDate.getFullYear();
-        let newHours=newDate.getHours();
-        let newMinutre=newDate.getMinutes();
-        // ini kita make ternary function biar simple, nentuin waktu zone nya 
-        let Timezone=newHours >= 12 ?'AM':'PM'
-        let Times=`${newDays}/${newMonth}/${newYear} ${newHours}:${newMinutre} ${Timezone}`
-        // Assigning Objectnya
-        // kita make unshift jadi array yang baru nya akan masuk dari awal index
-        // kesalahan tadi make push nanti buat ambil index function signUP nya susah dan gak efektif
-        usersShop.unshift(Object.assign({
-            _id:idSix,
-            username,
-            email,
-            password,
-            createdAt:Times,
-            isLoggedIn:false
-        },this))
-    }
-    },
-    //No 14 Part B
-    // masalah yang ku alami disini
-    {
-        signIN:function(user,pw){
-        // kita pake method find dulu untuk mencari username yang sama dengan parameter user
-        let existUser=usersShop.find((usersShop)=>usersShop.username===user);
-        // kita buat expresi kondisi jika existuser dan pw nya sama dengan object existuser.pw maka akan true
-        if (existUser&&pw===existUser.password) {
-            // jika berhasil maka object isloggedin akan menjadi True kan tadi pas signUp masi False
-            existUser.isLoggedIn=true
-            return 'You can Access Now'
-        }
-        else{
-            return 'Wrong Password'
-        }
-    }
-    }
     ];
-
-    const products = [
+    const products = [{
+        rateProduct:function(user,product,rate){
+            const findUser=usersShop.find(findUser=>findUser.username===user)
+            if(!findUser || !findUser.isLoggedIn){
+                return 'You Need To Log In first To rate the product'
+            }
+            if (rate < 1||rate > 5) {
+                return 'please Rate in between 1-5'
+            }
+            const findProduct=products.find(findProduct=>findProduct.name===product)
+            if (!product) {
+                return 'Product Is Not Found'
+            }
+            findProduct.ratings.push({userId:findUser._id,rate})
+            return 'Thanks For Rating'
+        }
+    },
+    {likeProduct: function (user, product, likes) {
+            const finduser = usersShop.find((usersShop) => usersShop.username === user);
+            if (!finduser || !finduser.isLoggedIn) {
+                return 'You need To log in First';
+            }
+            // ini sebenernya kita bisa ganti products.description ganti ke name agar lebih mudah karan cuma sedikit object nya
+            // tapi biar realistis aja
+            const findproduct = products.find(products => products.description === product);
+            if (!findproduct) {
+                return 'pls input the correct product';
+            }
+            if (likes.toLowerCase() === 'yes') {
+                findproduct.likes.push(
+                    { userId: finduser._id }
+                );
+                return 'Thanks for like';
+            }
+        },
+},
 {
     _id: 'eedfcf',
     name: 'mobile phone',
@@ -351,7 +384,8 @@ const usersShop = [
     name: 'Laptop',
     description: 'MacPro: System Darwin',
     price: 2500,
-    ratings: [],
+    ratings: [{ userId: 'fg12cy', rate: 4 },
+    { userId: 'zwf8md', rate: 3 }],
     likes: ['fg12cy']
 },
 {
@@ -359,22 +393,95 @@ const usersShop = [
     name: 'TV',
     description: 'Smart TV:Procaster',
     price: 400,
-    ratings: [{ userId: 'fg12cy', rate: 5 }],
+    ratings: [{ userId: 'fg12cy', rate: 3.5 },
+    { userId: 'fg12cy', rate: 5 },
+    { userId: 'fg12cy', rate: 3 }],
     likes: ['fg12cy']
 }
 ]
-// No 14 Part A function di line 276
-// Mungkin solusi agar mencari last index ini kurang efektif 
-// tapi hanya ini cara yang terpikirkan 
-const signUpindex=usersShop.length-2
-const functionSignup=usersShop[signUpindex]
-functionSignup.signUP('Ramzi','Ramzi03311@gmail.com','sirRamjier')
+// No 14 Part A in Web
+function signUPWeb(){
+    let Username=document.getElementById('User').value
+    let Email=document.getElementById('Email').value
+    let password=document.getElementById('Password').value
+    let result=document.getElementById('result')
+    let existUser=usersShop.some((usersShop)=>usersShop.email===Email)
+    if (existUser) {
+        result.innerHTML='User Already Exist'
+        return
+    }
+    let randomNumber='123456790WERTYUIOPQASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm'
+    let id=''
+    for (let i = 0; i <= 6; i++) {
+        let generateNumber=Math.floor(Math.random()*randomNumber.length)
+        id += randomNumber[generateNumber]
+    }
+    let newDate=new Date();
+            let newDays=newDate.getDay();
+            let newMonth=newDate.getMonth();
+            let newYear=newDate.getFullYear();
+            let newHours=newDate.getHours();
+            let newMinutre=newDate.getMinutes();
+            let Timezone=newHours >= 12 ?'AM':'PM'
+            let Times=`${newDays}/${newMonth}/${newYear} ${newHours}:${newMinutre} ${Timezone}`
+    usersShop.push({
+        _id:id,
+        Username,
+        Email,
+        password,
+        Times,
+        isLoggedIn:false
+    })
+    return console.log(Array.from(usersShop.values()));
+}
+// No 14 Part B in Web
+function signInWeb() {
+    let Username=document.getElementById('Username').value;
+    let Password=document.getElementById('Password').value;
+    let Result=document.getElementById('resultSignIn');
+    let existUser=usersShop.find(usersShop=>usersShop.username===Username);
+    let userPassword=usersShop.find(usersShop=>usersShop.password===Password)
+    if (existUser&&userPassword.password===Password) {
+        existUser.isLoggedIn=true
+        Result.innerHTML='Successfully Login'
+    }
+    else{
+        Result.innerHTML='Wrong Password/UserName'
+    }
+}
+// No 14 Part A function di line 235
+usersShop[0].signUP('Ramzi','Ramzi03311@gmail.com','sirRamjier')
 // ini contoh agar kita gak bisa buat akun dengan email yang sama bisa di liat di code function nya
-functionSignup.signUP('Ramzi','Ramzi03311@gmail.com','sirRamjier')
+usersShop[0].signUP('Ramzi','Ramzi03311@gmail.com','sirRamjier')
 console.log(Array.from(usersShop.values()));
 
-//No 15
-//Code nya di Nomor 319
-const signInIndex=usersShop.length-1
-const functionSignIn=usersShop[signInIndex]
-console.log(functionSignIn.signIN('Ramzi','sirRamjier'));
+//No 14 Part B di Line 277
+usersShop[1].signIN('Ramzi','sirRamjier')
+// isLoggedIn nya jadi True setelah signin
+console.log(usersShop[1].signIN('Ramzi','sirRamjier'));
+
+// No 15 Part A
+console.log(products[0].rateProduct('Ramzi','TV',5));
+console.log(Array.from(products.values()));
+// No 15 Part B
+function averageRating(productName){
+    const product = products.find(product => product.name === productName);
+    // Check if the product exists
+    if (!product) {
+        return 'Product not found';
+    }
+    // Check if the product has any ratings
+    if (!product.ratings || product.ratings.length === 0) {
+        return 'No ratings available for this product';
+    }
+    // Calculate the sum of ratings
+    const sumRatings = product.ratings.reduce((total, rating) => total + rating.rate, 0);
+    // Calculate the average rating
+    const average = sumRatings / product.ratings.length;
+
+    return average;
+}
+console.log(averageRating('TV'));
+//No 16
+console.log(products[1].likeProduct('Ramzi','Huawei Honor','yes'));
+console.log(Array.from(products.values()));

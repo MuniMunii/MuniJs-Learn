@@ -1,0 +1,29 @@
+.box-margin{
+    padding: 0;
+    margin: 0 auto;
+}
+.flexrow{
+    display: flex;
+    
+}
+.container{
+    border: 1px solid black;
+    padding: 3em;
+    margin: 0 3em;
+    text-align: center;
+}
+img{
+    width: 200px;
+}
+.product li{
+    align-items: center;
+    list-style: none;
+    padding: 3px 0;
+}
+.signup,.signin{
+    display: flex;
+    flex-direction: column;
+}
+.signup button,.signin button{
+    margin: auto 0;
+}
