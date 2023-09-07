@@ -27,3 +27,7 @@ img{
 .signup button,.signin button{
     margin: auto 0;
 }
+
+.product input{
+    margin-bottom:1em;
+}

@@ -327,7 +327,7 @@ const usersShop = [
         _id: 'ghderc',
         username: 'Thomas',
         email: 'thomas@thomas.com',
-        password: '123333',
+        password: '1234',
         createdAt:'08/01/2020 10:00 AM',
         isLoggedIn: false
     },
@@ -399,56 +399,6 @@ const usersShop = [
     likes: ['fg12cy']
 }
 ]
-// No 14 Part A in Web
-function signUPWeb(){
-    let Username=document.getElementById('User').value
-    let Email=document.getElementById('Email').value
-    let password=document.getElementById('Password').value
-    let result=document.getElementById('result')
-    let existUser=usersShop.some((usersShop)=>usersShop.email===Email)
-    if (existUser) {
-        result.innerHTML='User Already Exist'
-        return
-    }
-    let randomNumber='123456790WERTYUIOPQASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm'
-    let id=''
-    for (let i = 0; i <= 6; i++) {
-        let generateNumber=Math.floor(Math.random()*randomNumber.length)
-        id += randomNumber[generateNumber]
-    }
-    let newDate=new Date();
-            let newDays=newDate.getDay();
-            let newMonth=newDate.getMonth();
-            let newYear=newDate.getFullYear();
-            let newHours=newDate.getHours();
-            let newMinutre=newDate.getMinutes();
-            let Timezone=newHours >= 12 ?'AM':'PM'
-            let Times=`${newDays}/${newMonth}/${newYear} ${newHours}:${newMinutre} ${Timezone}`
-    usersShop.push({
-        _id:id,
-        Username,
-        Email,
-        password,
-        Times,
-        isLoggedIn:false
-    })
-    return console.log(Array.from(usersShop.values()));
-}
-// No 14 Part B in Web
-function signInWeb() {
-    let Username=document.getElementById('Username').value;
-    let Password=document.getElementById('Password').value;
-    let Result=document.getElementById('resultSignIn');
-    let existUser=usersShop.find(usersShop=>usersShop.username===Username);
-    let userPassword=usersShop.find(usersShop=>usersShop.password===Password)
-    if (existUser&&userPassword.password===Password) {
-        existUser.isLoggedIn=true
-        Result.innerHTML='Successfully Login'
-    }
-    else{
-        Result.innerHTML='Wrong Password/UserName'
-    }
-}
 // No 14 Part A function di line 235
 usersShop[0].signUP('Ramzi','Ramzi03311@gmail.com','sirRamjier')
 // ini contoh agar kita gak bisa buat akun dengan email yang sama bisa di liat di code function nya
