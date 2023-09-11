@@ -210,10 +210,10 @@ console.log(sortCapital,sortCountries,sortPopulation);
 // No 34
 // Masalah dan penjelasan di nomor ini
 function mostSpokenLanguage(country,numSlice){
-    // pertama kita filter dulu object country yang ada elemen languages
+    // pertama kita filter dulu object country yang ada key languages
     const filterLanguages=country
     .filter(country=>country.languages)
-    // dan method map ini mengambil array yang ada di elemen languages
+    // dan method map ini mengambil properti array dari key languages
     .map(country=>country.languages)
     // dan gunakan method reduce untuk satukan semua semua array languages tadi yang sudah di saring
     .reduce((acc,lang)=>acc.concat(lang),[])
