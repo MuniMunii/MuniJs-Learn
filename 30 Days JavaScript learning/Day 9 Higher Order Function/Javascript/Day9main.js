@@ -122,3 +122,121 @@ if (findRussia !== -1) {
 else{
     console.log('There is no russia in countries array');
 }
+
+// No 26
+const filterPrice=products.filter(price=>typeof price.price==='number')
+console.log(filterPrice);
+const sumPrice=filterPrice.reduce((total,value)=>total+value.price,0)
+console.log(sumPrice);
+
+// No 27
+const reduceCallback=products.reduce((total,price)=>{
+    if (typeof price.price==='number') {
+        return total+price.price
+    }
+    else{
+        return total
+    }
+},0)
+
+console.log(reduceCallback);
+
+// No 28
+function categorizeCountries(letter){
+    let findCountry=countries.filter(country=>country
+        .toLowerCase()
+        .includes(letter));
+    if (findCountry.length===0) {
+        return `There is no country that includes this '${letter}' letter`
+    }
+    return findCountry
+}
+console.log(categorizeCountries('land'));
+
+// No 29
+function startLetter(letter){
+    const findCountry=countries.filter(country=>country
+        .toLowerCase()
+        .startsWith(letter));
+    if (findCountry.length===0) {
+        return `There is no country that starts with '${letter}'`
+    }
+    return {
+        country:findCountry,
+        count:findCountry.length
+    }
+}
+console.log(startLetter('f'));
+
+// No 31
+function tenFirstCountries() {
+    const tenCountry=allCountries
+    .sort()
+    .slice(0,10);
+    return tenCountry
+}
+console.log(tenFirstCountries());
+
+// No 32
+function lastTenCountries() {
+    const tenCountry=allCountries
+    .reverse()
+    .slice(0,10);
+    return tenCountry
+}
+// console.log(lastTenCountries());
+
+// No 33 Sort Name
+const sortCountries=allCountries.sort().slice(0,10)
+console.log(sortCountries);
+
+// No 33 capital
+const sortCapital=allCountries
+.sort((a,b)=>{
+    if (typeof a.capital!=="string"||a.capital==='') {
+        return 1
+    }
+    else if(typeof b.capital1=='string'||b.capital===''){
+        return -1
+    }
+    return a.capital.localeCompare(b.capital)
+})
+.slice(0,10)
+
+// No 33 Sort Population
+const sortPopulation=allCountries.sort((a,b)=>b.population-a.population).slice(0,10)
+console.log(sortCapital,sortCountries,sortPopulation);
+
+// No 34
+// Masalah dan penjelasan di nomor ini
+function mostSpokenLanguage(country,numSlice){
+    // pertama kita filter dulu object country yang ada elemen languages
+    const filterLanguages=country
+    .filter(country=>country.languages)
+    // dan method map ini mengambil array yang ada di elemen languages
+    .map(country=>country.languages)
+    // dan gunakan method reduce untuk satukan semua semua array languages tadi yang sudah di saring
+    .reduce((acc,lang)=>acc.concat(lang),[])
+    // kita gunakan lagi reduce untuk menyimpan berapa banyak properti yang tersebut
+    const languagesCount=filterLanguages.reduce((counts,languages)=>{
+        // kita hitung semua languages nya
+        // jadi kita akses count[languages]. dan maksud dari (counts[languages]||0)+1
+        // jadi jika ada properti languages di object count ada yang undefined maka expresi nya akan mengembalikan nilai 0 dan +1 untuk menambahkan ke object count
+        // [ini itu Kunci contoh]=[Name,Age] contoh lagi age=30 nah age nya itu keys jadi di dalem [languages] languages nya yang jadi key dan count jadi angka nya
+        counts[languages]=(counts[languages]||0) + 1;
+        return counts;
+        },{})
+        // dan disini kita ambil kunci yang ada variable languagesCount 
+        // dan kita gunakan map untuk di jadikan object
+    const languagesKeys=Object.keys(languagesCount).map(languages=>({
+        // key languages tadi
+        languages,
+        // dan ini jumlah languages yang ada di languagesCount
+        count:languagesCount[languages]
+    }))
+    languagesKeys.sort((a,b)=>b.count-a.count)
+    // return languagesKeys.slice(0,numSlice)
+    return languagesCount
+}
+console.log(allCountries.map(country=>country.languages));
+console.log(mostSpokenLanguage(allCountries,10));
