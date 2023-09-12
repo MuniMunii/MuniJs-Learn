@@ -235,8 +235,90 @@ function mostSpokenLanguage(country,numSlice){
         count:languagesCount[languages]
     }))
     languagesKeys.sort((a,b)=>b.count-a.count)
-    // return languagesKeys.slice(0,numSlice)
-    return languagesCount
+    return languagesKeys.slice(0,numSlice)
 }
-console.log(allCountries.map(country=>country.languages));
 console.log(mostSpokenLanguage(allCountries,10));
+
+// No 35
+function populationSort(country,numSlice) {
+    const filterCountry=allCountries
+    .filter(country=>country.population)
+    .map(country=>({
+        country:country.name,
+        Population:country.population
+    }))
+    const conCountry=filterCountry.sort((a,b)=>b-a)
+    return conCountry.slice(0,numSlice)
+
+}
+console.log(populationSort(allCountries,10));
+
+// No 36
+const ages =[31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37, 31, 34, 24, 33, 29, 26]
+const statistics={
+    count:function(Age){
+        let countAge=Age.length
+        return countAge
+    },
+    Sum:function(Age){
+        let sumAge=Age.reduce((a,b)=>a+b,0)
+        return sumAge;
+    },
+    Min:function(Age){
+        // Kita pakai spread operator agar bisa membaca semua elemen di array
+        // kalo gak pake spread operator hasil nya Nan karna cuma bisa nge baca 1 elemen gak semuanya
+        let minAge=Math.min(...Age)
+        return minAge
+    },
+    Max:function(Age){
+        let maxAge=Math.max(...Age)
+        return maxAge
+    },
+    Range:function(Age) {
+        return this.Max(Age)-this.Min(Age)
+    },
+    Mean:function(Age){
+        let MeanData=Math.floor(this.Sum(Age)/Age.length)
+        return MeanData
+    },
+    Median:function(Age){
+        let SortAge=Age.sort((a,b)=>a-b);
+        if (SortAge.length % 2 ===0) {
+            // Number 1 ini bagian di kiri yang akan menghasilkan angka genap
+            let number1=SortAge([SortAge.length/2]-1);
+            // dan ini angka ganjil
+            let number2=SortAge(SortAge.length/2);
+            let Result=(number1-number2)/2;
+            return Result
+            
+        }else{
+            // ini jika saat di bagi hasil nya rata di bagian kiri dan kanan nya
+            return SortAge[Math.floor(SortAge.length/2)]
+        }
+    },
+    Mode:function(Age){
+        let objectMap={};
+        let initialized=0;
+        let Mode;
+        Age.forEach((value)=>{
+            objectMap[value]=(objectMap[value]||0)+1;
+            if (objectMap[value]>initialized) {
+                initialized=objectMap[value];
+                Mode=value
+            };
+        })
+        return {Mode,count:initialized}
+    }
+}
+
+
+
+
+console.log(statistics.count(ages));
+console.log(statistics.Sum(ages));
+console.log(statistics.Min(ages));
+console.log(statistics.Max(ages));
+console.log(statistics.Range(ages));
+console.log(statistics.Mean(ages));
+console.log(statistics.Median(ages));
+console.log(statistics.Mode(ages));
