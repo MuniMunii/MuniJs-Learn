@@ -297,23 +297,82 @@ const statistics={
         }
     },
     Mode:function(Age){
+        // kita buat object kosong terlebih dahulu
         let objectMap={};
+        // ini angka awal
         let initialized=0;
+        // dan ini juga hanya untuk penambahan nama di object nanti
         let Mode;
+        // kita pakai forEach untuk mengiterasi Satu per satu 
         Age.forEach((value)=>{
+            // jika value yang ada di objectMap maka akan di tambah 1
             objectMap[value]=(objectMap[value]||0)+1;
+            // dan jika value nya lebih besar dari initilized tadi
             if (objectMap[value]>initialized) {
+                // akan meng update hasil initialized yang 0 tadi di ubah dari objectmap[vakue]
                 initialized=objectMap[value];
+                // dan value kita ganti menjadi Mode
                 Mode=value
             };
         })
         return {Mode,count:initialized}
+    },
+    Variation:function(Age){
+        const Square=Age.map(value=>Math.pow(value-this.Mean(Age), 2))
+        const variation=Square.reduce((acc,value)=>acc+value,0)/Age.length
+        return variation
+    },
+    freqDist:function(Age){
+        let objectCurrent={}
+        Age.forEach(value=>{
+            objectCurrent[value]=(objectCurrent[value]||0)+1;
+        })
+        return objectCurrent
+    },
+    // Cara ke Dua
+    // masalah di nomor ini
+    freqDistArray:function(Age){
+        let arrayCurrent=[]
+        Age.forEach(element => {
+            // callback disini bertujuan untuk memeriksa apakah elemen kedua [1] dari tuple array current sama seperti elemen
+            // jika iya nanti elemen akan di simpan di variable ini
+            // dan jika tidak ada/copy/-1 maka tidak akan disimpan
+            const indexFreq=arrayCurrent.findIndex(item=>item[1]===element);
+            // expresi ini maksud nya
+            // jika indexFreq Bukan Gakada/copy/-1 maka akan count tadi di increment
+            if (indexFreq !== -1) {
+                arrayCurrent[indexFreq][0]++;
+            }
+            else{
+                // jadi 1 ini seperti initialisasi awal jika elemen ada maka 1 akan di increment
+                // yang di kondisi ada if
+                arrayCurrent.push([1,element])
+            }
+        });
+        // jika ingin menyortir Array di dalam array gunakan [] misal
+        // [[age,Name]] kalo ingin nyortir age brati di index 0 berarti a[0]-b[0] dan seterusnya
+        arrayCurrent.sort((a, b) => Number(a[1]) - Number(b[1]));
+        return arrayCurrent;
+    },
+    Desciption:function(Age){
+        console.log(`
+        Length= ${this.count(Age)}\n`+
+        `Sum= ${this.Sum(Age)}\n`+
+        `Min= ${this.Min(Age)}\n`+
+        `Max= ${this.Max(Age)}\n`+
+        `Mean= ${this.Mean(Age)}\n`+
+        `Median= ${this.Median(Age)}\n`+
+        `Mode= ${JSON.stringify(this.Mode(Age))}\n`+
+        `Variation= ${this.Variation(Age)}\n`+
+        `freqDist=${JSON.stringify(this.freqDist(Age))}\n`+
+        `freqDistArray=\n${JSON.stringify(this.freqDistArray(Age))}`);
+        
     }
 }
 
 
-
-
+console.log(statistics.freqDistArray(ages));
+console.log(statistics.freqDist(ages));
 console.log(statistics.count(ages));
 console.log(statistics.Sum(ages));
 console.log(statistics.Min(ages));
@@ -322,3 +381,5 @@ console.log(statistics.Range(ages));
 console.log(statistics.Mean(ages));
 console.log(statistics.Median(ages));
 console.log(statistics.Mode(ages));
+console.log(statistics.Variation(ages));
+console.log(statistics.Desciption(ages));
