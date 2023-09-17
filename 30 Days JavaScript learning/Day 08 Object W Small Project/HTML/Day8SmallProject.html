@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/day8.css">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../JavaScript/ProjectDay8.js"></script>
+    <div class="box-margin">
+    <div class="flexrow">
+        <div class="signup container">
+            <h1>Sign Up</h1>
+            <h3>Userame</h3>
+            <input type="text" placeholder="Userame" id="User">
+            <h3>Email</h3>
+            <input type="email" placeholder="Email" id="Email">
+            <h3>Password</h3>
+            <input type="text" placeholder="Password" id="Password">
+            <button onclick="signUPWeb()">Submit</button>
+            <p id="result"></p>
+        </div>
+        <div class="signin container">
+            <h1>Sign In</h1>
+            <h3>Username</h3>
+            <input type="text" placeholder="Userame" id="Username">
+            <h3>Password</h3>
+            <input type="password" id="password">
+            <button onclick="signInWeb()">Submit</button>
+            <p id="resultSignIn"></p>
+            <div class="Logout">
+                <h1>Log Out Account</h1>
+                <input type="text" id="Username-Logout">
+                <button onclick="LogoutWeb()">Submit</button>
+                <p id="ResultLogout"></p>
+            </div>
+        </div>
+        <div class="product-column container">
+            <div class="product">
+                <h2>Product Name</h2>
+                <h3>Huawei Honor</h3>
+                <img src="../images/Gear-Huawei-Honor.webp" alt="">
+                    <li>Price:200$</li>
+                    <li>Description:Handphone</li>
+                <h3>Rate From 1 - 5</h3>
+                <input type="text" id="Userrate" placeholder="Rate As...">
+                <br>
+                <input type="text" id="Rateweb" placeholder="1-5">
+                <button onclick="rateWeb('Huawei Honor')">Submit</button>
+                <p id="resultRateWeb"></p>
+                <p id="resultAverageWeb"> <span id="numID"> Average=3.5/5</span></p>
+            </div>
+            <div class="product"></div>
+            <div class="product"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

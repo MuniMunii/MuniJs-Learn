@@ -15,7 +15,9 @@ emptySetNumber2.delete(0)
 console.log(emptySetNumber2);
 
 // No 4
-// Menghapus semua Elemen
+// Menghapus semua Elemen 
+// Jadi nanti Elemen yang ada di Nomor 1 sampai 3 akan tidak ada value nya
+// karna kita gak menyimpan data ini ke variable 
 emptySetNumber2.clear()
 console.log(emptySetNumber2);
 
