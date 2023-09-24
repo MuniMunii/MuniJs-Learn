@@ -80,3 +80,17 @@ for (const {name,skills} of iterateUser) {
 const student = ['David', ['HTM', 'CSS', 'JS', 'React'], [98, 85, 90, 95]]
 const [user, skills,[ , ,jsScore,reactScore]]=student
 console.log(user,skills,jsScore,reactScore);
+
+// No 8
+const students = [
+        ['David', ['HTM', 'CSS', 'JS', 'React'], [98, 85, 90, 95]],
+        ['John', ['HTM', 'CSS', 'JS', 'React'], [85, 80, 85, 80]]
+      ]
+function arrayToObject(Student){
+let studentObject=Student.map(student=>{
+  let [name,skills,skillsscore]=student
+  return {name,skills,skillsscore}
+})
+return studentObject
+}
+console.log(arrayToObject(students));
