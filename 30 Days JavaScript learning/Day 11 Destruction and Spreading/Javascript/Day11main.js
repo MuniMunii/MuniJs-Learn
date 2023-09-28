@@ -81,16 +81,49 @@ const student = ['David', ['HTM', 'CSS', 'JS', 'React'], [98, 85, 90, 95]]
 const [user, skills,[ , ,jsScore,reactScore]]=student
 console.log(user,skills,jsScore,reactScore);
 
-// No 8
+// No 8 Masalah dan solusi di Nomor Ini
 const students = [
         ['David', ['HTM', 'CSS', 'JS', 'React'], [98, 85, 90, 95]],
         ['John', ['HTM', 'CSS', 'JS', 'React'], [85, 80, 85, 80]]
       ]
 function arrayToObject(Student){
+  // kita gunakan map agar mengubah semua array menjadi object saat di return nya
 let studentObject=Student.map(student=>{
   let [name,skills,skillsscore]=student
   return {name,skills,skillsscore}
 })
+// abis itu di function nya kita return variable Map nya
 return studentObject
 }
 console.log(arrayToObject(students));
+
+// No 9 masalah dan solusi di nomor ini
+const students1 = {
+  name: 'David',
+  age: 25,
+  skills: {
+    frontEnd: [
+      { skill: 'HTML', level: 10 },
+      { skill: 'CSS', level: 8 },
+      { skill: 'JS', level: 8 },
+      { skill: 'React', level: 9 }
+    ],
+    backEnd: [
+      { skill: 'Node',level: 7 },
+      { skill: 'GraphQL', level: 8 },
+    ],
+    dataBase:[
+      { skill: 'MongoDB', level: 7.5 },
+    ],
+    dataScience:['Python', 'R', 'D3.js']
+  }
+}
+// Gak tau gimana yang di haruskan di soal nya tetapi ku gunakan push saja biar gampang
+students1.skills.frontEnd.push({skill:'BootStrap',level:9})
+students1.skills.backEnd.push({skill:'Express',level:8})
+students1.skills.dataBase.push({skill:'SQL',level:8})
+students1.skills.dataScience.push('SQL')
+// setelah sudah selesai mengePUsh kita re construksikan
+// jangan lupa saat kontruksi Object pakai juga properti nya agar kebaca dan tidak undefined
+let {name:nama,age:ages,skills:skillss}=students1
+console.log(nama,ages,skillss);
