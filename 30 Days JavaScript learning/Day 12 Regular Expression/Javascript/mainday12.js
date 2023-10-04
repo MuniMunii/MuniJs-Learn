@@ -43,7 +43,7 @@ function mostFrequentWords(text,numSlice){
     let pattern=/\b[a-zA-Z]+\b/gi
     // kita buat variable nya menjadi array agar bisa di baca kalimat nya pakai Array.from dan text.match(pattern)apakah sama dengan pattern nya
     let extractArray=Array.from(text.match(pattern))
-    // kita hitung array nya makai reduce
+    // kita hitung array nya makai reduce ada di day 9 jika ingin melihat nya ulang
     let countArray=extractArray.reduce((count,text)=>{
         count[text]=(count[text]||0)+1;
         return count;
