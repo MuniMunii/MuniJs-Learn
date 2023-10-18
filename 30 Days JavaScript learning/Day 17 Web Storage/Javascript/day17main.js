@@ -1,5 +1,5 @@
 // No 1
-localStorage.setItem('firstname','Ramzi','lastname','Akbar');
+localStorage.setItem('firstname','Ramzi');
 localStorage.setItem('lastname','Akbar');
 localStorage.setItem('Age','20');
 localStorage.setItem('Country','Indonesia');
