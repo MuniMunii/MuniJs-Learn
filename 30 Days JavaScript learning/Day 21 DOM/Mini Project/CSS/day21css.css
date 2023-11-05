@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+}
+.body-margin{
+    margin: 0 auto;
+    width: 70%;
+}
+.wrapper{
+    max-width: 700px;
+    margin: 0 auto;
+}
+.title{
+    text-align: center;
+}
+.title h2{
+    text-decoration: underline;
+    font-weight: lighter;
+}
+li{
+    list-style: none;
+    margin-bottom: 5px;
+    padding: 1em;
+    background-color: rgb(223, 57, 57);
+}
+#title-Years{
+    font-size: 3rem;
+}
+#change-date{
+    margin: 0 30%;
+    padding: 10px 20px;
+}
