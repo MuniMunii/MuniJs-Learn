@@ -1,0 +1,19 @@
+.title{
+    text-align: center;
+}
+.title h1{
+    letter-spacing: 2px;
+    font-weight: lighter;
+}
+.title h3,a{
+    color: #333;
+    text-decoration: none;
+}
+.countries-wrapper{
+    
+    font-weight: lighter;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
