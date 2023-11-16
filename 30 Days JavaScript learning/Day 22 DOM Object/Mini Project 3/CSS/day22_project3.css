@@ -1,0 +1,49 @@
+*{
+    box-sizing: border-box;
+}
+h1{
+    text-align: center;
+}
+.body-margin{
+    margin: 0 auto;
+    width: 70%;
+}
+.wrapper{
+    max-width: 900px;
+    margin: 0 auto;
+}
+.title{
+    text-align: center;
+}
+.title h2{
+    text-decoration: underline;
+    font-weight: lighter;
+}
+li{
+    list-style: none;
+    margin-bottom: 5px;
+    padding: 1em;
+    
+}
+.li-content{
+    display: flex;
+    justify-content: space-between;
+}
+#title-Years{
+    font-size: 3rem;
+}
+#change-date{
+    margin: 0 30%;
+    padding: 10px 20px;
+}
+.parent-center{
+    text-align: center;
+}
+.logo-social a{
+    display: inline-block;
+    margin: 0 3px;
+}
+.author-profile{
+    display: flex;
+    justify-content: space-between;
+}
