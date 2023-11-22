@@ -50,9 +50,9 @@ let getSummaryContent=document.querySelectorAll('.summary-content')
 let getTitleSummary=document.querySelectorAll('.title-summary')
 let getStatus=document.querySelectorAll('.condition')
 let getLogoSocial=document.querySelector('.logo-social')
-let getAuthorTitle=document.querySelectorAll('.content-author-title')
-let getAuthorQuali=document.querySelectorAll('.content-author-qua')
-let getAuthorSkills=document.querySelectorAll('.content-author-skill')
+let getAuthorTitle=document.querySelector('.content-author-title')
+let getAuthorQuali=document.querySelector('.content-author-qua')
+let getAuthorSkills=document.querySelector('.content-author-skills')
 // loopan buat nama content nya
 asabenehChallenges2020.challenges.forEach((challenges,index)=>{
     getTitleContent[index].textContent=challenges.name
@@ -78,8 +78,46 @@ asabenehChallenges2020.author.socialLinks.forEach((social,index)=>{
     createA.href=social.url
     getLogoSocial.appendChild(createA)
 })
-asabenehChallenges2020.author.titles.forEach((title,index)=>{
-    let createLI=document.createElement('li')
-    let createTitle=getAuthorTitle[index]
-    createTitle.appendChild(createLI)
+
+// Cara pertama yang kurang efektif 
+// let getUL=document.createElement('ul')
+// let conSkills=asabenehChallenges2020.author.titles.map(([title,role])=>`${title} ${role}`).forEach((word)=>{
+//     let createLI=document.createElement('li')
+//     createLI.textContent=word
+//     createLI.style.margin='3px 0'
+//     getUL.appendChild(createLI)
+// })
+// // Buat liat debug
+// console.log(conSkills);
+// getAuthorTitle.appendChild(getUL)
+// let getUL2=document.createElement('ul')
+// let getSkillsList=asabenehChallenges2020.author.qualifications.forEach(word=>{
+//     let createLI=document.createElement('li')
+//     createLI.textContent=word
+//     getUL2.appendChild(createLI)
+// })
+// getAuthorSkills.appendChild(getUL2)
+
+function createList(list,data){
+    let getUL=document.createElement('ul')
+    data.forEach(data=>{
+        let createLI=document.createElement('li')
+        createLI.textContent=data
+        getUL.appendChild(createLI)
+    })
+    list.appendChild(getUL)
+}
+createList(getAuthorQuali, asabenehChallenges2020.author.qualifications);
+createList(getAuthorTitle,asabenehChallenges2020.author.titles.map(([title,role])=>`${title} ${role}`));
+createList(getAuthorSkills,asabenehChallenges2020.author.skills)
+
+let getKeyword=document.querySelector('.Keyword')
+asabenehChallenges2020.keywords.map(word=>`#${word}`)
+.forEach(word=>{
+    let createLI=document.createElement('li');
+    createLI.textContent=word
+    createLI.style.borderRadius='10px'
+    createLI.style.margin='3px'
+    createLI.style.backgroundColor=hexGenerator()
+    getKeyword.appendChild(createLI)
 })

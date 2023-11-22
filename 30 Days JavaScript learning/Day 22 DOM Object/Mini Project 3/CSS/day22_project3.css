@@ -45,5 +45,28 @@ li{
 }
 .author-profile{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+}
+/* .content-author-title,
+.content-author-qua,
+.content-author-skill{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+} */
+.title-div li{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.title-div h2{
+    text-align: center;
+}
+.row-keyword{
+    display: flex;
+    flex-wrap: wrap;
+}
+.haha h2{
+    text-align: left;
 }
