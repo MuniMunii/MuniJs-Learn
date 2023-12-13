@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Planets Weight calculate</title>
+    <link rel="stylesheet" href="../CSS/Main.css">
+</head>
+<body>
+    <h1 style="text-align: center;">Calculate Weight an object on every planet</h1>
+    <div class="form-input" style="display: flex; justify-content: center;"> 
+        <input type="text" placeholder="Mass in Kilograms" id="mass" style="margin: 0 10px; padding-left: 1%; width: 14em; height: 2em; border: 1px solid grey; border-radius: 5px;">
+    <select name="planet" id="planets" style="margin: 0 10px; width: 12em; height: 2em; border: 1px solid grey; border-radius: 5px;">
+        <option value="" disabled>Select a Planet</option>
+        <option value="merkurius" data-gravity="3.7">Merkurius</option>
+        <option value="venus" data-gravity="8.87">Venus</option>
+        <option value="earth" data-gravity="9.14">Earth</option>
+        <option value="mars" data-gravity="3.71">Mars</option>
+        <option value="jupiter" data-gravity="24.79">Jupiter</option>
+        <option value="saturnus" data-gravity="10.44">Saturnus</option>
+        <option value="neptunus" data-gravity="11.15">Neptunus</option>
+        <option value="uranus" data-gravity="8.69">Uranus</option>
+        <option value="pluto" data-gravity="0.62">Pluto</option>
+    </select>
+    <input type="button" value="Submit" onclick="calculateObject()">
+    </div>
+
+    <div class="wrapper" style="margin: 0 auto; width: 75%; margin-top: 10px;">
+        <div class="container" style="margin: 0 auto; max-width: 1250px; background-color: rgba(0, 0, 0, 0.137); text-align: center; padding: 20px;"> 
+            <div class="content" style="display: flex; justify-content: center;"> 
+                <img src="../image/earth.png" alt="">
+                <div class="result"> </div>
+            </div>
+        </div>
+    </div>
+    <script src="../Javascript/Main.js"></script>
+</body>
+</html>
