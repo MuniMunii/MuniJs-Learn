@@ -1,6 +1,4 @@
-//if(getGravity==='merkurius'){
-img. style ganti
-}//
+
 let getResult=document.querySelector('.result')
 function calculateObject(){
     let getContent=document.querySelector('.content')
