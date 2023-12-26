@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.wrapper{
+    width: 80%;
+    margin: 0 auto;
+}
+.container{
+    max-width: 900px;
+    margin: 0 auto;
+}
+.button-list{
+    margin: 10px 5px;
+}
+.button-list button{
+    margin: 0 10px;
+    color: rgb(26, 25, 25);
+    background-color: #FED766;
+    display: inline-block;
+    padding: 10px 32px;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+}
+.container-bar{
+    justify-content: space-around;
+    margin: 10px 0;
+}
+.bar{
+    background-color: black;
+    flex: 1;
+    height: 20px;
+    margin: 0 10px;
+}
+#count{
+}
