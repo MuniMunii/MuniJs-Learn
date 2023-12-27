@@ -17,7 +17,7 @@ body{
     margin: 10px 5px;
 }
 .button-list button{
-    margin: 0 10px;
+    margin:  0 10px 15px; 
     color: rgb(26, 25, 25);
     background-color: #FED766;
     display: inline-block;
@@ -27,14 +27,14 @@ body{
     border: none;
 }
 .container-bar{
-    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
     margin: 10px 0;
 }
 .bar{
-    background-color: black;
-    flex: 1;
+    background-color: rgb(156, 42, 42);
     height: 20px;
-    margin: 0 10px;
-}
-#count{
+    margin-right: auto;
 }

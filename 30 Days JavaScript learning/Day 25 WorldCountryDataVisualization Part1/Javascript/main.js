@@ -5,7 +5,8 @@ getCountryLength.textContent=countriesLength
 let getChart=document.getElementById('chart-countries')
 
 function Languages(){
-    let getContainerBar=document.getElementsByClassName('container-bar');
+    let GetContainer=document.querySelector('.container')
+
     let getRow=document.querySelectorAll('.data-row')
     let filteredLanguages=countries.filter(countries=>countries.languages)
     .map(countries=>countries.languages)
@@ -19,20 +20,43 @@ function Languages(){
         count:languageCountry[language]
     }))
     let sortLanguageX=languageKey.sort((a,b)=>b.count-a.count).slice(0,10)
-
-    getRow.forEach((row,index) => {
-        let getNameLanguage=row.querySelector('.language-name')
-        let getBar=row.querySelector('.bar')
-        let getCount=row.querySelector('.count')
-        if (sortLanguageX[index]) {
-            getNameLanguage.innerHTML=`${innerHTML=sortLanguageX[index].language}`
-            getCount.innerHTML=`${sortLanguageX[index].count}`
-            getBar.style
-        }
-    });
+    
+    let getLanguageName = document.querySelectorAll('.language-name')
+    let getCountainerBar=document.querySelectorAll('.container-bar')
+    let getCount = document.querySelectorAll('.count')
+    
+    for (let index = 0; index < sortLanguageX.length; index++) {
+        let createBar=document.createElement('div')
+        createBar.setAttribute('class','bar')
+        createBar.style.width=`${sortLanguageX[index].count}%`
+        getLanguageName[index].innerHTML=sortLanguageX[index].language
+        getCount[index].innerHTML=sortLanguageX[index].count
+        getCountainerBar[index].appendChild(createBar)
+    }
 }
+// Cara kurang efektip
+// for (let i = 0; i < sortLanguageX.length; i++) {
+//     let createDiv=document.createElement('div')
+//     createDiv.setAttribute('class','container-bar')
 
+//     let createLangName=document.createElement('p')
+//     createLangName.innerHTML=sortLanguageX[i].language
 
+//     let createCount=document.createElement('p')
+//     createCount.innerHTML=sortLanguageX[i].count
+    
+//     let createBar=document.createElement('div')
+//     createBar.setAttribute('class','bar')
+//     createBar.style.width=`${sortLanguageX[i].count}%`
+
+//     createDiv.appendChild(createLangName)
+//     createDiv.appendChild(createBar)
+//     createDiv.appendChild(createCount)
+
+//     document.querySelector('.container').appendChild(createDiv)
+// }
+
+// Cara menggunakan library
 // new Chart(getChart,{ 
     //     type:'horizontalBar',
     //     data:{
