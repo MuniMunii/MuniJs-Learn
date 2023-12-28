@@ -33,8 +33,21 @@ body{
     gap: 10px;
     margin: 10px 0;
 }
+.container-bar:nth-child(1){
+    margin-top: 0;
+}
+.container-bar:last-child{
+    margin-bottom: 0;
+}
+.language-name{
+    text-align: left;
+    width: 6em;
+}
+
 .bar{
     background-color: rgb(156, 42, 42);
     height: 20px;
     margin-right: auto;
+    max-width: 60%;
+    width: 0;
 }

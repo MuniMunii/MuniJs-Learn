@@ -3,10 +3,14 @@ console.log(countriesLength);
 let getCountryLength=document.getElementById('country-Length')
 getCountryLength.textContent=countriesLength
 let getChart=document.getElementById('chart-countries')
+let getLanguageName = document.querySelectorAll('.language-name')
+let getCountainerBar=document.querySelectorAll('.container-bar')
+let getCount = document.querySelectorAll('.count')
+let getBar=document.querySelectorAll('.bar')
+let getWorld=document.querySelectorAll('.world')
 
 function Languages(){
     let GetContainer=document.querySelector('.container')
-
     let getRow=document.querySelectorAll('.data-row')
     let filteredLanguages=countries.filter(countries=>countries.languages)
     .map(countries=>countries.languages)
@@ -20,20 +24,35 @@ function Languages(){
         count:languageCountry[language]
     }))
     let sortLanguageX=languageKey.sort((a,b)=>b.count-a.count).slice(0,10)
-    
-    let getLanguageName = document.querySelectorAll('.language-name')
-    let getCountainerBar=document.querySelectorAll('.container-bar')
-    let getCount = document.querySelectorAll('.count')
-    
+
     for (let index = 0; index < sortLanguageX.length; index++) {
-        let createBar=document.createElement('div')
-        createBar.setAttribute('class','bar')
-        createBar.style.width=`${sortLanguageX[index].count}%`
+        getBar[index].style.width=`${sortLanguageX[index].count}%`
         getLanguageName[index].innerHTML=sortLanguageX[index].language
         getCount[index].innerHTML=sortLanguageX[index].count
-        getCountainerBar[index].appendChild(createBar)
     }
 }
+
+function Population(){
+    let getAllCountries=countries.filter(country=>country.population)
+    .map(countries=>countries.population)
+    .reduce((a,b)=>a + b)
+    let populationOnEachCountry=countries.filter(country=>country.population)
+    .map(countries=>({
+        country:countries.name,
+        population:countries.population} 
+    ),{})
+    let sortedPopulationsCountries=populationOnEachCountry.sort((a,b)=>b.population-a.population).slice(0,10)
+    sortedPopulationsCountries.unshift({country:'World',population:getAllCountries})
+    console.log(sortedPopulationsCountries);
+    for (let i = 0; i < sortedPopulationsCountries.length; i++) {
+        let PercentagePopulation=sortedPopulationsCountries[i].population/getAllCountries*100
+        getLanguageName[i].innerHTML=sortedPopulationsCountries[i].country
+        getBar[i].style.width=`${PercentagePopulation}%`
+        getCount[i].innerHTML=sortedPopulationsCountries[i].population
+        
+    }
+}
+
 // Cara kurang efektip
 // for (let i = 0; i < sortLanguageX.length; i++) {
 //     let createDiv=document.createElement('div')
@@ -55,7 +74,6 @@ function Languages(){
 
 //     document.querySelector('.container').appendChild(createDiv)
 // }
-
 // Cara menggunakan library
 // new Chart(getChart,{ 
     //     type:'horizontalBar',
