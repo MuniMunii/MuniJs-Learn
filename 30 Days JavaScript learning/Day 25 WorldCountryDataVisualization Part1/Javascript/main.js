@@ -9,6 +9,32 @@ let getCount = document.querySelectorAll('.count')
 let getBar=document.querySelectorAll('.bar')
 let getWorld=document.querySelectorAll('.world')
 
+// penjelasan disini
+function Display(data,property,allData){
+    // pertama kita reset dulu semua isi container bar nya
+    // dengan menggunakan forEach untuk mengambil array dari queryselector Array getCountainerBar
+    // jadi tidak nge overide bekas data lain nya dan tidak berbekas
+    getCountainerBar.forEach(containerBar => containerBar.style.display = 'none');
+    // kemudian expressi di loop ini jika i lebih kecil dari lengthcontainerbar
+    for (let i = 0; i <getCountainerBar.length; i++) {
+        let Percentage=data[i][property]/allData*100
+            getBar[i].style.width=`${Percentage}%`
+            // dan expresi condition ini jika i lebih kecil dari data.length nya akan di tambahkan data nya
+        if (i<data.length) {
+            // biar gampang ku pakai variable label
+            // jadi pake operator OR apakah data nya country/Language
+            let Label=data[i].country||data[i].language
+            getLanguageName[i].innerHTML=Label
+            // kita ambil property nya apakah itu count/population
+            getCount[i].innerHTML=data[i][property]
+            getCountainerBar[i].style.display='flex'
+        }
+        else{
+            getCountainerBar[i].style.display = 'none';
+        }
+    }
+}
+
 function Languages(){
     let GetContainer=document.querySelector('.container')
     let getRow=document.querySelectorAll('.data-row')
@@ -24,12 +50,8 @@ function Languages(){
         count:languageCountry[language]
     }))
     let sortLanguageX=languageKey.sort((a,b)=>b.count-a.count).slice(0,10)
-
-    for (let index = 0; index < sortLanguageX.length; index++) {
-        getBar[index].style.width=`${sortLanguageX[index].count}%`
-        getLanguageName[index].innerHTML=sortLanguageX[index].language
-        getCount[index].innerHTML=sortLanguageX[index].count
-    }
+    let allLang=sortLanguageX.map(countries=>countries.count).reduce((a,b)=>a+b,0)
+    Display(sortLanguageX,'count',allLang)
 }
 
 function Population(){
@@ -44,13 +66,8 @@ function Population(){
     let sortedPopulationsCountries=populationOnEachCountry.sort((a,b)=>b.population-a.population).slice(0,10)
     sortedPopulationsCountries.unshift({country:'World',population:getAllCountries})
     console.log(sortedPopulationsCountries);
-    for (let i = 0; i < sortedPopulationsCountries.length; i++) {
-        let PercentagePopulation=sortedPopulationsCountries[i].population/getAllCountries*100
-        getLanguageName[i].innerHTML=sortedPopulationsCountries[i].country
-        getBar[i].style.width=`${PercentagePopulation}%`
-        getCount[i].innerHTML=sortedPopulationsCountries[i].population
-        
-    }
+
+    Display(sortedPopulationsCountries,'population',getAllCountries)
 }
 
 // Cara kurang efektip
@@ -74,6 +91,7 @@ function Population(){
 
 //     document.querySelector('.container').appendChild(createDiv)
 // }
+
 // Cara menggunakan library
 // new Chart(getChart,{ 
     //     type:'horizontalBar',
