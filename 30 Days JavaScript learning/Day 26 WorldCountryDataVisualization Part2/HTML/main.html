@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../CSS/main.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container"> 
+            <div class="header-title">
+                <h1>World Countries List</h1>
+                <p>Total Numbers Of Country: <span  class="Total-Country"></span></p>
+                <div class="button-List">
+                    <button class="button" onclick="StartWith()">Starting Word</button>
+                    <button class="button" onclick="AnyWord()">Search With Any Word</button>
+                    <button class="button" onclick="SortWeb()"><i class="fa fa-sort-alpha-desc" aria-hidden="true"></i></button>
+                </div>
+                <div class="search-bar" style="display: flex; align-items: center; justify-content: center;">
+                    <input type="text" class="input-Class" placeholder="Search Countries...">
+                    <h2 style="margin-left: 4px; color: rgb(0, 0, 0);" onclick="Search()"><i class="fa fa-search" aria-hidden="true"></i></h2>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="container country">
+                
+    </div>
+    <script src="../Javascript/data_country.js"></script>
+    <script src="../Javascript/main.js"></script>
+</body>
+</html>
