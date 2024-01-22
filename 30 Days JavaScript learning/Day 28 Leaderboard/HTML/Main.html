@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="wrapper"> 
+        <div class="container">
+            <h1 class="title" style="text-align: center; margin: 15px 0;">30 Days Javascript Challenge Leaderboard</h1>
+            <div class="input-list"> 
+                <input type="text" class="input-class" id="First-input" placeholder="First Name">
+                <input type="text" class="input-class" id="Last-input" placeholder="Last Name">
+                <input type="text" class="input-class" id="Country-input" placeholder="Country">
+                <input type="text" class="input-class" id="Score-input" placeholder="Score">
+                <button class="submit-class" id="Submit"  >Add Player</button>
+            </div>
+            <h2 id="error-messages" style="text-align: center; color: red; font-size: 16px; margin: 10px 0;"></h2>
+            <div class="player-list"> 
+                <div class="player">
+                    <div class="name-date">
+                        <p class="name">Muni Muni</p>
+                        <p class="date">jan 10 2020</p>
+                    </div>
+                    <p id="country">Findland</p>
+                    <p id="score">85</p>
+                    <div class="button-list"> 
+                        <button class="button-function" id="delete-player" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        <button class="button-function" id="increment-score">+5</button>
+                        <button class="button-function" id="decrement-score">-5</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../Javascript/main.js"></script>
+</body>
+</html>
