@@ -19,6 +19,10 @@ let createMinute=createTime.getMinutes()
 let MonthsNames=MonthsInAlphabets[createMonths]
 let TimeRN=`${MonthsNames} ${createDate} ${createYear} ${createHour}:${createMinute}`
 console.log(TimeRN);
+let getCheckIndex=document.getElementById('checkIndex')
+getCheckIndex.addEventListener('click',()=>{
+    console.log(info);
+})
 
 // function updatePlayer(){
 //     info.forEach(player => {
@@ -77,29 +81,54 @@ function DisplayPlayer(firstname,lastName,country,score){
     createButtonList.setAttribute('class','button-list')
     getPlayerList.appendChild(createButtonList)
     //
+    let LastPlayerIndex=info.length-1
     let createTrashButton=document.createElement('button')
     createTrashButton.setAttribute('class','button-function')
     createTrashButton.setAttribute('id','delete-player')
+    createTrashButton.setAttribute('data-index',LastPlayerIndex)
     createTrashButton.innerHTML='<i class="fa fa-trash" aria-hidden="true"></i>'
     createTrashButton.style.color='red'
     createTrashButton.addEventListener('click',()=>{
-        
+        let changeIndex=createTrashButton.setAttribute('data-index',LastPlayerIndex)
+        const LastPlayer=parseInt(createTrashButton.dataset.index)
+        if(!isNaN(LastPlayer)&&LastPlayer >= 0 && LastPlayer<info.length){
+            createPlayerDiv.remove()
+            info.splice(LastPlayer,1)
+            getPlayerList.querySelectorAll('.player').forEach((playerdiv,index)=>{
+                const button=playerdiv.querySelector('.delete-player, .increment-score, .decrement-score')
+                button.setAttribute('data-index',index)
+            })
+        }
     })
     //
     let incrementButton=document.createElement('button')
     incrementButton.setAttribute('class','button-function')
     incrementButton.setAttribute('id','increment-score')
+    incrementButton.setAttribute('data-index',LastPlayerIndex)
     incrementButton.innerHTML='+5'
     incrementButton.addEventListener('click',()=>{
-        info[info.length-1].Score+=5
-        // updatePlayer()
+        let changeIndex=incrementButton.setAttribute('data-index',LastPlayerIndex)
+        const LastPlayer=parseInt(incrementButton.dataset.index)
+        if (!isNaN(LastPlayer)&&LastPlayer >= 0 && LastPlayer < info.length) {
+            let updatedScore=info[LastPlayer].Score+=5
+            createPScore.innerHTML=`${updatedScore}`
+            
+        }
     })
     //
     let decrementButton=document.createElement('button')
     decrementButton.setAttribute('class','button-function')
     decrementButton.setAttribute('id','decrement-score')
+    decrementButton.setAttribute('data-index',LastPlayerIndex)
     decrementButton.innerHTML='-5'
-
+    decrementButton.addEventListener('click',()=>{
+        let changeIndex=incrementButton.setAttribute('data-index',LastPlayerIndex)
+        const LastPlayer=parseInt(decrementButton.dataset.index)
+        if (!isNaN(LastPlayer)&&LastPlayer >= 0 && LastPlayer < info.length) {
+            let updatedScore=info[LastPlayer].Score-=5
+            createPScore.innerHTML=`${updatedScore}`
+        }
+    })
     createButtonList.appendChild(createTrashButton)
     createButtonList.appendChild(incrementButton)
     createButtonList.appendChild(decrementButton)

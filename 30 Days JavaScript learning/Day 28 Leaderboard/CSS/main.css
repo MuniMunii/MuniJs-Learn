@@ -76,6 +76,7 @@
     padding: 15px;
     border: none;
     background-color: white;
+    cursor: pointer;
 }
 #country,
 #score{
