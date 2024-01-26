@@ -19,23 +19,13 @@ let createMinute=createTime.getMinutes()
 let MonthsNames=MonthsInAlphabets[createMonths]
 let TimeRN=`${MonthsNames} ${createDate} ${createYear} ${createHour}:${createMinute}`
 console.log(TimeRN);
-let getCheckIndex=document.getElementById('checkIndex')
-getCheckIndex.addEventListener('click',()=>{
-    console.log(info);
-})
-
-// function updatePlayer(){
-//     info.forEach(player => {
-//         DisplayPlayer(player.Score);
-//     });
-// }
 let info=[]
 getSubmit.addEventListener('click',()=>{
     let scoreValue=parseInt(getScore.value);
     let firstNameValue=getFirstName.value;
     let lastNameValue=getLastName.value;
     let countryValue=getCountry.value; 
-    if(getFirstName.value===''||getLastName.value===''||getCountry.value===''||isNaN(scoreValue)||scoreValue===''){
+    if(firstNameValue===''||lastNameValue===''||countryValue===''||isNaN(scoreValue)||scoreValue===''){
         getError.innerHTML='Input The Correct Value'
     }
     else{
@@ -52,6 +42,12 @@ function DisplayPlayer(firstname,lastName,country,score){
     let createPlayerDiv=document.createElement('div')
     createPlayerDiv.setAttribute('class','player')
 
+    function updateIndex(){
+        let index = 0;
+        document.querySelectorAll('.button-function').forEach(button => {
+            button.dataset.index = index++;
+        });
+    }
     // 
     let createNameDate=document.createElement('div')
     createNameDate.setAttribute('class','name-date')
@@ -89,15 +85,9 @@ function DisplayPlayer(firstname,lastName,country,score){
     createTrashButton.innerHTML='<i class="fa fa-trash" aria-hidden="true"></i>'
     createTrashButton.style.color='red'
     createTrashButton.addEventListener('click',()=>{
-        let changeIndex=createTrashButton.setAttribute('data-index',LastPlayerIndex)
         const LastPlayer=parseInt(createTrashButton.dataset.index)
         if(!isNaN(LastPlayer)&&LastPlayer >= 0 && LastPlayer<info.length){
             createPlayerDiv.remove()
-            info.splice(LastPlayer,1)
-            getPlayerList.querySelectorAll('.player').forEach((playerdiv,index)=>{
-                const button=playerdiv.querySelector('.delete-player, .increment-score, .decrement-score')
-                button.setAttribute('data-index',index)
-            })
         }
     })
     //
