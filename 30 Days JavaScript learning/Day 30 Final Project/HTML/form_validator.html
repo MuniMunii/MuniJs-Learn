@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h1 class="title">Validating Web Form</h1>
+            <div class="direction"> 
+                <form action="" class="form1">
+                    <label for="" class="label-name">First Name</label>
+                    <br>
+                    <input class="input-class firstname" id="firstname" type="text">
+                    <p id="errorname" style="display: none;"></p>
+                    <br>
+                    <label for="" class="label-name">Last Name</label>
+                    <br>
+                    <input class="input-class" id="lastname" type="text">
+                    <p id="errorLname" style="display: none;"></p>
+                    <br>
+                    <label for="" class="label-name">Email</label>
+                    <br>
+                    <input class="input-class" id="email" type="email">
+                    <p id="erroremail" style="display: none;"></p>
+                    <br>
+                    <label for="" class="label-name">Password</label>
+                    <br>
+                    <input class="input-class" id="password" type="password">
+                    <p id="passerror" style="display: none;"></p>
+                    <br>
+                    <label for="" class="label-name">Telephone</label>
+                    <br>
+                    <input class="input-class" id="telephone" type="text">
+                    <p id="teleerror" style="display: none;"></p>
+                    <br>
+                    <label for="" class="label-name">Bio</label>
+                    <br>
+                    <textarea name="" class="input-class bio" id="bio" cols="30" rows="5"></textarea>
+                    <p id="bioerror" style="display: none;"></p>
+                    <button type="submit" id="submit" class="submit-class">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../Javascript/form.js"></script>
+</body>
+</html>

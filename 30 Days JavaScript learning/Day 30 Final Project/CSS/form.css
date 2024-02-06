@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+}
+.title{
+    font-size: 2rem;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+.wrapper{
+    margin: 0 auto;
+    width:80%;
+}
+.container{
+    margin: 0 auto;
+    max-width: 1000px;
+}
+.label-name{
+    font-weight: 500;
+    font-size: 1.27rem;
+    font-family: sans-serif;
+}
+.form1{
+    margin: 0 25%;
+}
+.input-class{
+    width: 100%;
+    outline: none;
+    height: 30px;
+    padding-left: 10px;
+    border: orange solid 2px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+.bio{
+    height: 75px;
+    vertical-align: top;
+}
+.submit-class{
+    background-color: grey;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 5px;
+}
