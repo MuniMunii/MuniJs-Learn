@@ -18,7 +18,7 @@ getFirstNameInput.addEventListener('input',function (){
         if (getNameInputValue.length > 3 && getNameInputValue.match(patterName)&&getNameInputValue.length < 16) {
             getFirstNameInput.style.border='solid 2px green'
             getErrorName.style.display='none'
-            isFormValid=(getFirstNameInput.style.border='solid 2px green')
+            isFormValid=true
             changeSubmitButton()
         }
         else{
@@ -34,7 +34,7 @@ getLastName.addEventListener('input',function(){
     if(getLastNameValue.length > 3 && getLastNameValue.match(patternName)&&getLastNameValue.length < 16){
         getLastName.style.border='solid 2px green'
         getErrorName.style.display='none'
-        isFormValidLast=(getFirstNameInput.style.border='solid 2px green')
+        isFormValidLast=true
         changeSubmitButton()
     }else{
         getLastName.style.border='solid 2px red'
@@ -50,7 +50,7 @@ getEmail.addEventListener('input',function (){
         getEmail.style.border='solid 2px green'
         getEmail.style.backgroundColor='rgba(64, 187, 64, 0.425); !important'
         getEmailError.style.display='none'
-        isFormValidEmail=(getEmail.style.border='solid 2px green')
+        isFormValidEmail=true
         changeSubmitButton()
     }
     else{
@@ -66,7 +66,7 @@ getPassword.addEventListener('input',function(){
     if (getPasswordValue.match(getPattern)) {
         getPassword.style.border='solid 2px green'
         getPassError.style.display='none'
-        isFormValidPassword=(getPassword.style.border='solid 2px green')
+        isFormValidPassword=true
         changeSubmitButton()
     }
     else{
@@ -82,7 +82,7 @@ getTelephone.addEventListener('input',function(){
     if (getTelephoneValue.match(getTelePatteren)) {
         getTelephone.style.border='green 2px solid'
         getTeleError.style.display='none'
-        isFormValidTele=(getTelephone.style.border='green 2px solid')
+        isFormValidTele=true
         changeSubmitButton()
     }
     else{
@@ -98,7 +98,7 @@ getBiograph.addEventListener('input',function(){
     if (getBiographValue.match(bioPattern)) {
         getBiograph.style.border='2px green solid'
         getBioError.style.display='none'
-        isFormValidBio=( getBiograph.style.border='2px green solid')
+        isFormValidBio=true
         changeSubmitButton()
     }
     else{

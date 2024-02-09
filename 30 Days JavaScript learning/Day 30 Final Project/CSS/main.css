@@ -1,0 +1,83 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    box-sizing: border-box;
+    margin: 0;
+    background-color: #F8F4F9;
+}
+.wrapper{
+    margin: 0 auto;
+    width: 90%;
+}
+.title{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+.title h1{
+    font-weight: 400;
+    color: #F3D34A;
+    letter-spacing: 2px;
+}
+.input-setting{
+    margin: 0 auto;
+    padding-top: 1em;
+    padding-bottom: 2em;
+    text-align: center;
+    background-color: white;
+}
+.input-class{
+    color: #F3D34A;
+    margin-bottom: 1em;
+    padding-left: 8px;
+    width: 50%;
+    height: 30px;
+    border-radius: 25px;
+    outline: none;
+    border: solid 1px grey;
+}
+.button-class{
+    padding: 0.5em 3em;
+    margin: 0 10px;
+    border-radius: 25px;
+    width: 150px;
+    border: none;
+    background-color: #F3D34A;
+}
+#container{
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+.country-card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif ;
+    padding: 1em;
+    width: 170px;
+    height: 250px;
+    margin: 10px;
+    justify-content: space-between;
+    background-color: white;
+    overflow: hidden;
+}
+.title-card{
+    color: #F3D34A;
+    text-align: center;
+    font-size: 1rem;
+}
+.country-card img{
+    width: 130px;
+    height: 100px;
+    margin: 0 auto;
+}
+.text-content{
+    font-size: 0.7rem;
+}
+.country-card .text-content{
+    overflow-wrap:break-word ;
+}
