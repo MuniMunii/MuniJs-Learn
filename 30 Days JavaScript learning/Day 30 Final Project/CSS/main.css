@@ -65,19 +65,22 @@ body{
     background-color: white;
     overflow: hidden;
 }
+.text-content{
+    justify-self: center;
+    font-size: 0.7rem;
+    margin: 6px 0;
+}
 .title-card{
     color: #F3D34A;
     text-align: center;
     font-size: 1rem;
 }
-.country-card img{
+.img-card{
     width: 130px;
     height: 100px;
     margin: 0 auto;
 }
-.text-content{
-    font-size: 0.7rem;
-}
-.country-card .text-content{
+
+.img-card .text-content{
     overflow-wrap:break-word ;
 }
