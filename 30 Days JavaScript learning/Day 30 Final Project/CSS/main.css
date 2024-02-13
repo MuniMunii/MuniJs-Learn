@@ -44,6 +44,9 @@ body{
     width: 150px;
     border: none;
     background-color: #F3D34A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #container{
     justify-content: space-between;
@@ -83,4 +86,14 @@ body{
 
 .img-card .text-content{
     overflow-wrap:break-word ;
+}
+.statistic-button-list{
+    display: flex;
+    justify-content: center;
+}
+.statistic-button{
+    margin: 0 8px;
+    border: none;
+    padding: 0.5em 3em;
+    background-color: #F3D34A;
 }

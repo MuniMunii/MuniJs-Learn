@@ -51,12 +51,8 @@ function CreateDisplayData(data){
 const getDataInput=document.getElementById('input-data')
 getDataInput.addEventListener('input',function(){
     let getDataValue=getDataInput.value.toLowerCase()
-    let DataValueFilter=countries.filter((country)=>{
-        const lowerNameCountries=country.name.toLowerCase()
-        return( 
-        lowerNameCountries.startsWith(getDataValue)
-        )
-    })
+    const getInputInfo=document.getElementById("input-info")
+    let DataValueFilter=countries.filter((country)=>country.name.toLowerCase().startsWith(getDataValue)||(country.name||'').toLowerCase().startsWith(getDataValue))
     Display(DataValueFilter)
 })
 
@@ -65,6 +61,12 @@ const getButtonName=document.getElementById('sort-country')
 const getButtonCapital=document.getElementById('sort-capital')
 const getButtonPopulation=document.getElementById('sort-population')
 let toggle=true
+let toggleNCapital=true
+let toggleNPopulation=true
+const getArrowCountryCapital = document.getElementById('arrow-capital');
+const getArrowCountry=document.getElementById('arrow-country')
+const getArrowCountryPopulation=document.getElementById('arrow-population')
+
 getButtonName.addEventListener('click',function(){
     let getDataValue=getDataInput.value.toLowerCase()
     let DataValueFilter=countries.filter((country)=>{
@@ -73,8 +75,11 @@ getButtonName.addEventListener('click',function(){
         lowerNameCountries.startsWith(getDataValue)
         )
     })
-    const getArrowCountry=document.getElementById('arrow-country')
     toggle=!toggle
+    toggleNCapital=false
+    toggleNPopulation=false
+    getArrowCountryCapital.innerHTML=''
+    getArrowCountryPopulation.innerHTML=''
     if (toggle) {
         DataValueFilter.sort((a,b)=>a.name.localeCompare(b.name))
         getArrowCountry.innerHTML='arrow_upward'
@@ -85,4 +90,50 @@ getButtonName.addEventListener('click',function(){
     }
     
     Display(DataValueFilter)
+})
+getButtonCapital.addEventListener('click', function () {
+    let getDataValue = getDataInput.value.toLowerCase();
+    let DataValueFilter = countries.filter((country) => {
+        const lowerCapitalCountries = (country.capital||'').toLowerCase();
+        return (
+            lowerCapitalCountries.startsWith(getDataValue)
+        );
+    });
+    getArrowCountry.innerHTML=''
+    getArrowCountryPopulation.innerHTML=''
+    toggleNCapital = !toggleNCapital;
+    toggle=false
+    toggleNPopulation=false
+    if (toggleNCapital) {
+        DataValueFilter.sort((a, b) => (a.capital||'').localeCompare(b.capital));
+        getArrowCountryCapital.innerHTML = 'arrow_upward';
+    } else {
+        DataValueFilter.sort((a, b) => (b.capital||'').localeCompare(a.capital));
+        getArrowCountryCapital.innerHTML = 'arrow_downward';
+    }
+
+    Display(DataValueFilter);
+});
+getButtonPopulation.addEventListener('click',function(){
+    let getDataValue = getDataInput.value.toLowerCase();
+    let DataValueFilter = countries.filter((country) => {
+        const lowerCapitalCountries = country.name.toLowerCase();
+        return (
+            lowerCapitalCountries.startsWith(getDataValue)
+        );
+    });
+    getArrowCountryCapital.innerHTML=''
+    getArrowCountry.innerHTML=''
+    toggleNPopulation = !toggleNPopulation;
+    toggle=false
+    toggleNCapital=false
+    if (toggleNPopulation) {
+        DataValueFilter.sort((a, b) => a.population-b.population);
+        getArrowCountryPopulation.innerHTML = 'arrow_upward';
+    } else {
+        DataValueFilter.sort((a, b) => b.population-a.population);
+        getArrowCountryPopulation.innerHTML = 'arrow_downward';
+    }
+
+    Display(DataValueFilter);
 })

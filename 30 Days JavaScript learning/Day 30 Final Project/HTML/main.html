@@ -19,13 +19,13 @@
     <div class="input-setting">
         <!-- input atas disini -->
         <div style="margin-bottom: 2em;">
-            <input class="input-class" id="input-data" type="text" placeholder="Search with Country,Capital,Languages">
+            <input class="input-class" id="input-data" type="text" placeholder="Search Country With Name">
         </div>
 
         <div style="display: flex; justify-content: center; align-content: center;">
-            <button class="button-class" id="sort-country">Name <span class="material-symbols-outlined" id="arrow-country"></span></button>
-            <button class="button-class" id="sort-capital">Capital <span class="material-symbols-outlined" id="arrow-capital"></span></button>
-            <button class="button-class" id="sort-population">Population <span class="material-symbols-outlined" id="arrow-population"></span></button>
+            <button class="button-class" id="sort-country">Name <span class="material-symbols-outlined" id="arrow-country" style="font-size: 1rem; font-weight: bold;" ></span></button>
+            <button class="button-class" id="sort-capital">Capital <span class="material-symbols-outlined" id="arrow-capital" style="font-size: 1rem; font-weight: bold;"></span></button>
+            <button class="button-class" id="sort-population">Population <span class="material-symbols-outlined" id="arrow-population" style="font-size: 1rem;font-weight: bold;"></span></button>
             <span class="material-symbols-outlined" style="color: #F3D34A; font-size: 2.3em;">
                 bar_chart_4_bars
             </span>
@@ -35,8 +35,14 @@
         <div id="container">
             
         </div>
+        <div class="statistic-bar">
+            <div class="statistic-button-list">
+                <button class="statistic-button" id="Languages-stats">Languages</button>
+                <button class="statistic-button" id="population-stats">Population</button>
+            </div>
+        </div>
     </div>
     <script src="../Javascript/countries_data.js"></script>
-    <script src="../Javascript/main.js"></script>
+    <script src="../Javascript/main.js" defer></script>
 </body>
 </html>
