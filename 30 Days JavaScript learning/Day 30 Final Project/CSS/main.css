@@ -97,3 +97,71 @@ body{
     padding: 0.5em 3em;
     background-color: #F3D34A;
 }
+.statistic-display{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.statistic-bar{
+    display: flex;
+    flex-direction: column;
+}
+.Bar{
+    height: 32px;
+    max-width: 100%;
+    background-color: #F3D34A;
+}
+.label-bar{
+    width: 6em;
+}
+.percentage{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+/* CreateDisplayStatistic(getCountries) */
+/* function CreateDisplayStatistic(Data){
+    let languagesCount=Data
+    .filter(country=>country.languages)
+    .map(country=>country.languages)
+    .reduce((acc,lang)=>acc.concat(lang),[])
+    .reduce((languages,count)=>{
+        languages[count]=(languages[count]||0)+1
+        return languages
+    },{});
+    const LanguagesObject=Object.keys(languagesCount).map(languages=>({
+        languages,
+        LanguagesCount:languagesCount[languages]
+    }))
+    let sortLanguages=LanguagesObject.sort((a,b)=>b.LanguagesCount-a.LanguagesCount).slice(0,9)
+    const allLanguagesIncrement=LanguagesObject.map(country=>country.LanguagesCount).reduce((a,b)=>a+b,0)
+    console.log(sortLanguages);
+    console.log(allLanguagesIncrement);
+
+    sortLanguages.forEach((Data)=>{
+    const getStatisticBar=document.getElementById('statistic-bar')
+    const createLabel=document.createElement('p')
+    createLabel.setAttribute('class','label-bar')
+    createLabel.innerHTML=Data.languages
+
+    const createBar=document.createElement('div')
+    createBar.setAttribute('class','Bar')
+    createBar.style.width=Data.LanguagesCount/allLanguagesIncrement*100
+    
+    const createCount=document.createElement('p')
+    createCount.innerHTML=Data.LanguagesCount
+    getStatisticBar.appendChild(createLabel)
+    getStatisticBar.appendChild(createBar)
+    getStatisticBar.appendChild(createCount)
+})
+let filteringPopulation=Data.filter(country=>country.population)
+        let incrementOfAllCountry=filteringPopulation.reduce((a,b)=>a-b,0);
+        let createObjectPopulation=filteringPopulation.map(country=>({
+            country:country.name,
+            population:country.population
+        }),{})
+        .sort((a,b)=>a.population-b.population)
+        .slice(0,9);
+        createObjectPopulation.unshift({
+        country:'World',
+        population:incrementOfAllCountry
+        }); */

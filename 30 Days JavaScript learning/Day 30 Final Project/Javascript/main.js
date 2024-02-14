@@ -2,8 +2,8 @@ const countriesLength=countries.length
 const getCountriesLength=document.querySelector('.countries-length')
 getCountriesLength.textContent=`Currently we have ${countriesLength} countries in the world`
 const countriesFilter=countries.filter(countries=>countries.name)
+let getCountries=countries
 const getContainer=document.getElementById('container')
-let getDisplayedCountry=countries.slice()
 function createContainer(Data){
     Data.forEach(Country=>{
     const getCountryData=CreateDisplayData(Country)
@@ -18,7 +18,7 @@ function Display(data){
     createContainer(data)
 }
 
-createContainer(getDisplayedCountry)
+createContainer(getCountries)
 
 function CreateDisplayData(data){
         let createImg=document.createElement('img')
@@ -137,3 +137,44 @@ getButtonPopulation.addEventListener('click',function(){
 
     Display(DataValueFilter);
 })
+let togglePopulation=false
+let toggleLanguages=false
+
+function CreateStatistic(Data){
+    let languagesCount=Data
+    .filter(country=>country.languages)
+    .map(country=>country.languages)
+    .reduce((acc,lang)=>acc.concat(lang),[])
+    .reduce((languages,count)=>{
+        languages[count]=(languages[count]||0)+1
+        return languages
+    },{});
+    const LanguagesObject=Object.keys(languagesCount).map(languages=>({
+        languages,
+        LanguagesCount:languagesCount[languages]
+    }))
+    let sortLanguages=LanguagesObject.sort((a,b)=>b.LanguagesCount-a.LanguagesCount).slice(0,9)
+    const allLanguagesIncrement=LanguagesObject.map(country=>country.LanguagesCount).reduce((a,b)=>a+b,0)
+    console.log(sortLanguages);
+    console.log(allLanguagesIncrement);
+    let getStatisticBar=document.querySelector('.statistic-bar')
+    // untuk besok coba buat ini jadi function biar bisa di ganti toggle nya jadi ke population biar ga banyak function
+    sortLanguages.forEach((Data)=>{
+    const createPercentage=document.createElement('div')
+    createPercentage.setAttribute('class','percentage')
+    const createLabel=document.createElement('p')
+    createLabel.setAttribute('class','label-bar')
+    createLabel.innerHTML=Data.languages
+    const createBar=document.createElement('div')
+    createBar.setAttribute('class','Bar')
+    createBar.style.width=`${Data.LanguagesCount/allLanguagesIncrement*100}%`
+    const createCount=document.createElement('p')
+    createCount.innerHTML=Data.LanguagesCount
+    createCount.style.marginLeft='auto'
+    createPercentage.appendChild(createLabel)
+    createPercentage.appendChild(createBar)
+    createPercentage.appendChild(createCount)
+    getStatisticBar.appendChild(createPercentage)
+})
+}
+CreateStatistic(getCountries)
