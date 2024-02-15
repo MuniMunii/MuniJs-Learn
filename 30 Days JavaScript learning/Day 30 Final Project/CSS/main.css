@@ -1,5 +1,6 @@
 *{
     font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
 }
 body{
     box-sizing: border-box;
@@ -104,14 +105,19 @@ body{
 .statistic-bar{
     display: flex;
     flex-direction: column;
+    margin: 10px 0;
 }
 .Bar{
     height: 32px;
-    max-width: 100%;
+    margin: 0 15px;
+    max-width: 90%;
     background-color: #F3D34A;
 }
+.Bar:first-child {
+    width: 90%;
+}
 .label-bar{
-    width: 6em;
+    width: 10em;
 }
 .percentage{
     display: flex;
