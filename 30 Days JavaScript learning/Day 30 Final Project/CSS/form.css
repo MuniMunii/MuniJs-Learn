@@ -42,3 +42,13 @@
     border: none;
     border-radius: 5px;
 }
+.link-next{
+    color: black;
+    text-decoration: none;
+    float: left;
+}
+.link-next:hover{
+    color: #F3D34A;
+    text-decoration: underline;
+    transition: left 1s;
+}

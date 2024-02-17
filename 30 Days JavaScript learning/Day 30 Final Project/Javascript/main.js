@@ -157,37 +157,36 @@ function CreateStatisticLang(Data){
 }
 function CreateStatisticPopulation(Data){
     let filteringPopulation=Data.filter(country=>country.population)
-        let incrementOfAllCountry=filteringPopulation.map(country=>country.population).reduce((a,b)=>a+b,0)
+        let incrementOfAllCountry=getCountries.map(country=>country.population).reduce((a,b)=>a+b,0)
         let createObjectPopulation=filteringPopulation
         .sort((a,b)=>b.population-a.population)
         .map(country=>({
-            label:country.name,
-            Count:country.population
+            labelPop:country.name,
+            CountPop:country.population
         }),{});
         let sortingCountry=createObjectPopulation
         .slice(0,10);
         sortingCountry.unshift({
-        label:'World',
-        Count:incrementOfAllCountry
+        labelPop:'World',
+        CountPop:incrementOfAllCountry
         });
         createContainerStatistic(sortingCountry,incrementOfAllCountry)
         console.log(sortingCountry);
         console.log(incrementOfAllCountry);
 }
 let getStatisticBar=document.querySelector('.statistic-bar')
-function createContainerStatistic(data,Alldata){
-    
+function createContainerStatistic(data,Alldata,a){
     data.forEach((Data)=>{
         const createPercentage=document.createElement('div')
         createPercentage.setAttribute('class','percentage')
         const createLabel=document.createElement('p')
         createLabel.setAttribute('class','label-bar')
-        createLabel.innerHTML=Data.label
+        createLabel.innerHTML=Data.label||Data.labelPop
         const createBar=document.createElement('div')
         createBar.setAttribute('class','Bar')
-        createBar.style.width=`${Data.Count/Alldata*70}%`
+        createBar.style.width=`${Data.Count/Alldata*70||Data.CountPop/Alldata*70||Data.CountPop/Alldata*70}%`
         const createCount=document.createElement('p')
-        createCount.innerHTML=Data.Count
+        createCount.innerHTML=Data.Count||Data.CountPop
         createCount.style.marginLeft='auto'
         createPercentage.appendChild(createLabel)
         createPercentage.appendChild(createBar)
@@ -195,9 +194,27 @@ function createContainerStatistic(data,Alldata){
         getStatisticBar.appendChild(createPercentage)
     })
 }
-let toggleStatsPopulation=true
+let toggleStatsPopulation=false
 let toggleStatsLanguages=true
 let buttonLanguagesStat=document.getElementById('Languages-stats')
+let buttonPopulationStat=document.getElementById('population-stats')
+buttonPopulationStat.addEventListener('click',function(){
+    let getDataValue = getDataInput.value.toLowerCase();
+    let DataValueFilter = countries.filter((country) => {
+        const lowerCapitalCountries = country.name.toLowerCase();
+        return (
+            lowerCapitalCountries.startsWith(getDataValue)
+        );
+    });
+    toggleStatsPopulation=!toggleStatsPopulation
+    toggleStatsLanguages=false
+    if (toggleStatsLanguages) {
+        Display(DataValueFilter)
+    }
+    else(
+        Display(DataValueFilter)
+    )
+})
 buttonLanguagesStat.addEventListener('click',function(){
     let getDataValue = getDataInput.value.toLowerCase();
     let DataValueFilter = countries.filter((country) => {
@@ -207,7 +224,7 @@ buttonLanguagesStat.addEventListener('click',function(){
         );
     });
     toggleStatsLanguages=!toggleStatsLanguages
-    toggleNPopulation=false
+    toggleStatsPopulation=false
     if (toggleStatsLanguages) {
         Display(DataValueFilter)
     }
@@ -230,5 +247,4 @@ function Display(data){
         CreateStatisticPopulation(data)
     }
 }
-// masalah untuk besok coba perbaiki function createcontainerbar nya
-// soalnya kalo cuma 1 function akan ngenampilin 2 container dan toggle nya ga berfungsi karna 1 function 1 parameter nya sama 
+Display(getCountries)
