@@ -1,4 +1,5 @@
 // No 1
+console.log('================Array=================');
 let EmptyArray=[]
 console.log(EmptyArray);
 for (let i = 1; i < 6; i++) {
@@ -101,3 +102,45 @@ if(countries.includes('Ethiopia')){
 else{
     countries.push('Ethiopia')
 }
+
+if (webTechs.includes('Sass')) {
+    console.log('Sass is preprocess CSS');
+}
+else{
+    webTechs.push('Sass')
+    console.log(webTechs);
+}
+
+const frontEnd = ['HTML', 'CSS', 'JS', 'React', 'Redux']
+const backEnd = ['Node', 'Express', 'MongoDB']
+const Fullstack=frontEnd.concat(backEnd)
+console.log(Fullstack);
+
+const ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24] 
+const AgesSort=ages.sort
+const MinAges=Math.min(...ages)
+const MaxAges=Math.max(...ages)
+const MedianAges=ages[ages.length/2]
+const AverageAges=ages.reduce((a,b)=>a+b)/ages.length
+const RangeAges=MaxAges-MinAges
+const CompareValueMinAges=Math.abs(MinAges-AverageAges)
+const CompareValueMaxAges=Math.abs(MaxAges-AverageAges)
+console.log(CompareValueMinAges);
+
+const FirstTenCountries=countries.slice(0,10)
+const MiddleCountries=countries[Math.floor(countries.length/2)]
+console.log(MiddleCountries);
+
+let FirstHalf,SecondHalf
+const CountriesLength=countries.length
+const CountriesHalfLength=countries.length/2
+if (CountriesLength % 2===1 ) {
+    FirstHalf=countries.slice(0,CountriesHalfLength)
+    SecondHalf=countries.slice(CountriesHalfLength)
+}
+else{
+    FirstHalf=countries.slice(0,CountriesHalfLength + 1)
+    SecondHalf=countries.slice(CountriesHalfLength + 1)
+}
+console.log(FirstHalf,SecondHalf);
+console.log('=======================================');
