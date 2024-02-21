@@ -5,7 +5,7 @@ start learning on August 2 2023
 <br>
 Finished on February 17 2024
 <br>
-Here are the link ([Challenge](https://github.com/Asabeneh/30-Days-Of-JavaScript)),Thank to the author for creating this challenge
+Here are the link [Challenge](https://github.com/Asabeneh/30-Days-Of-JavaScript),Thank to the author for creating this challenge
 <br>
 (and later i will summary what i learned about JS in this Blog)
 <br>
@@ -16,7 +16,7 @@ start learning on February 20 2024
 Ongoing
 <br>
 <br>
-Here are the link ([Challenge](https://github.com/Asabeneh/30-Days-Of-JavaScript)](https://github.com/Asabeneh/30-Days-Of-React/tree/master)),Thank to the author for creating this challenge
+Here are the link [Challenge](https://github.com/Asabeneh/30-Days-Of-React/tree/master),Thank to the author for creating this challenge
 <br>
 Day 1 Js refresher
 <br>
