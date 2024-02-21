@@ -47,9 +47,61 @@ OddEvenChecker.addEventListener('input',function(){
         OddEvenResult.style.visibility='hidden'
     }
 })
+const workdayChecker=document.querySelector('.workday-checker')
+workdayChecker.addEventListener('input',function(){
+    let workdayValue=workdayChecker.value
+    let workdayValueLowecase=workdayValue.toLowerCase()
+    const workdayResult=document.getElementById('workday-result')
+    switch (workdayValueLowecase) {
+        case 'monday':
+        case 'tuesday':
+        case 'wednesday':
+        case 'thursday':
+        case 'friday':
+            workdayResult.innerHTML=`${workdayValue} is Workday`
+            break;
+        case 'saturday':
+        case 'sunday':
+            workdayResult.innerHTML=`${workdayValue} is weekend`
+            break;
+        default:
+            workdayResult.innerHTML='Input The correct Day'
+            break;
+    }
+})
+
+const MonthChecker=document.querySelector('.month-checker')
+MonthChecker.addEventListener('input',function(){
+    let MonthValue=MonthChecker.value
+    let MonthValueToLowerCase=MonthValue.toLowerCase()
+    const MonthResult=document.getElementById('month-result')
+    switch (MonthValueToLowerCase) {
+        case 'januari':
+        case 'april':
+        case 'juni':
+        case 'juli':
+        case 'september':
+        case 'november':
+            MonthResult.innerHTML='has 31 days'
+            break;
+        case 'maret':
+        case 'desember':
+        case 'mei':
+        case 'agustus':
+        case 'oktober':
+            MonthResult.innerHTML='has 30 days'
+            break;
+        case 'februari':
+            MonthResult.innerHTML='has 28 days'
+            break;
+        default:
+            MonthResult.innerHTML=`There is No ${MonthValue} Months`
+            break;
+    }
+})
+console.log('================Conditional=================');
 let a=3
 let b=4
-console.log('================Conditional=================');
 if(b>a){
     console.log(`${b} is greater than ${a}`);
 }
@@ -75,28 +127,37 @@ function checkgrade(Number){
         console.log(`You Better studying If You dont wanna Stay class`);
     }
 }
-console.log(checkgrade(20));
+checkgrade(20)
 
 function seasonCheck(Months) {
     let MonthsLowerCase=Months.toLowerCase()
     switch (MonthsLowerCase) {
         case 'januari':
+        case 'january':
         case 'februari':
+        case 'february':
         case 'desember':
+        case 'december':
             console.log('Now is Winter');
             break;
         case 'maret':
+            case 'march':
         case'april':
         case 'mei':
+            case 'may':
             console.log('Now is Spring');
             break;
         case 'juni':
+            case 'june':
         case 'juli':
+            case 'july':
         case 'agustus':
+            case 'augustus':
             console.log('Now is Summer');
             break;
         case 'september':
         case'oktober':
+        case'october':
         case 'november':
             console.log('Now is Autumn');
             break;
@@ -104,6 +165,6 @@ function seasonCheck(Months) {
             break;
     }
 }
-console.log(seasonCheck('januari'));
+seasonCheck('januari')
 
 console.log('============================================');
