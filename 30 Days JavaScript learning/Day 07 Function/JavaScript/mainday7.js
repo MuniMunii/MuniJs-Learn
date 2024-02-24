@@ -337,7 +337,7 @@ function findMax2(num1,num2,num3) {
 console.log(findMax2(0,-21,-24));
 
 //No 16 Ini hasil dari chat gpt Mohon maaf karna aku 
-//kurang mengerti matematika jadi jika tau solusi dan logika nya nya bisa contak aku
+//kurang mengerti matematika jadi jika tau solusi dan logika nya
 function linearEquation(a,x,b,y,c) {
     const solution=a*x + b*y + c;
     return solution;
