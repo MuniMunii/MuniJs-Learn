@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,4 +11,39 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.h1-title{
+  text-align: center;
+  font-size: 23px;
+}
+.subs-container{
+  text-align: center;
+  border-radius: 25px;
+  background-color: #A1CDF4;
+  padding: 10px 0 25px;
+
+  margin: 20px 3%;
+}
+.input-subs{
+  margin: 10px;
+  padding-left: 10px;
+  border: none;
+  height: 30px;
+  border-radius: 5px;
+  outline: none;
+}
+.title-subs{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+.button-subs{
+  font-family: "Montserrat", sans-serif;
+  border-radius: 5px;
+  padding: 3px 10%;
+  color: white;
+  font-weight: bolder;
+  letter-spacing: 3px;
+  height: 30px;
+  border: none;
+  background-color: red;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import  ReactDOM  from 'react-dom';
 import {Link} from 'react-router-dom';
-
+import Exercise2 from './exercise2';
 const jsxElement=<h1>This is JSX Element</h1>
 const rootElement=document.getElementById('root')
 function Index(){
@@ -52,4 +52,4 @@ function Index(){
 }
 
 export default Index
-ReactDOM.render(<Index />,rootElement)
+ReactDOM.render(<Exercise2 />,rootElement)
