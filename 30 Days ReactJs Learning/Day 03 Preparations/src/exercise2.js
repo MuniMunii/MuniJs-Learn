@@ -3,11 +3,29 @@ import htmlLogo from "./assets/img/HtmlLogo.png";
 import jsLogo from "./assets/img/JsLogo.svg";
 import reactLogo from "./assets/img/react_logo.png";
 import "./index.css";
+import Index from './index';
+import profileImage from './assets/img/profile.jpeg';
+import VerfiedIcon from'./assets/img/verified.png'
 function Profile(){
-    let skills=['Html','Css','Sass','Js','Bootstrap']
+    const skills=['Html','Css','Sass','Js','Bootstrap']
     let skillsIntoList=skills.map(skill=><li className="list-class">{skill}</li>)
-    let name='Ramzi Akbar Ramadhan ✔'
-    let copyRight='&#169 Joined On august 23 2023'
+    const name='Ramzi Akbar Ramadhan'
+    const iconVerified=VerfiedIcon
+    const occupation='Student, Indonesia'
+    const copyRight='© Joined On august 23 2023'
+    let profileCard=(
+      <div className="profile-card">
+        <img className="profile-img"src={profileImage} alt="profile"></img>
+        <h2 className="name-profile">{name.toUpperCase()}<span><img src={iconVerified} className="icon-verified"></img></span></h2>
+        <small>{occupation}</small>
+        <h2 style={{marginBottom:'5px',fontWeight:'400',letterSpacing:'2px'}}>Skills</h2>
+        <ul>
+          {skillsIntoList}
+        </ul>
+        <footer style={{fontWeight:'300', fontSize:'12px'}}>{copyRight}</footer>
+      </div>
+    );
+    return profileCard
 }
 function Subscribe() {
   const inputSubs = (
@@ -29,6 +47,7 @@ function Subscribe() {
 function Exercise2() {
   const Style = {
     display: "flex",
+    flexWrap:'wrap',
     margin: "0 auto",
     justifyContent: "center",
   };
@@ -53,6 +72,7 @@ function Exercise2() {
         <img style={imgStyle} src={Logo.react}></img>
       </div>
       <div>{Subscribe()}</div>
+      <div>{Profile()}</div>
     </div>
   );
   return Model;

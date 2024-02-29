@@ -1,9 +1,11 @@
 import React from 'react';
 import  ReactDOM  from 'react-dom';
 import {Link} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Exercise2 from './exercise2';
 const jsxElement=<h1>This is JSX Element</h1>
 const rootElement=document.getElementById('root')
+
 function Index(){
   const HeaderStyle={
     backgroundColor:'red',
@@ -52,4 +54,7 @@ function Index(){
 }
 
 export default Index
-ReactDOM.render(<Exercise2 />,rootElement)
+ReactDOM.render(
+<React.StrictMode>
+<Exercise2></Exercise2>
+</React.StrictMode>,rootElement)
