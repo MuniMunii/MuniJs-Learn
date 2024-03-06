@@ -1,0 +1,27 @@
+.themedark{
+    color: white;
+    background-color: #212529
+}
+.themedark.subs-container{
+    background-color: #6c757d;
+}
+.themedark.subs-container .button-subs{
+    background-color: #dee2e6;
+    color: black;
+}
+.themedark.profile-card{
+    background-color: #6c757d;
+}
+.themedark.profile-card .list-class{
+    background-color: #adb5bd;
+}
+.themedark.profile-card .theme-button{
+    background-color: #adb5bd;
+}
+.themedark.profile-card .theme-button:hover{
+    background-color: #dee2e6;
+    color: black;
+}
+.themedark.bar-flex .bar-color{
+    border: 1px solid white;
+}

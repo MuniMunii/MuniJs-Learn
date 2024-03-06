@@ -1,0 +1,47 @@
+.Title{
+    text-align: center;
+    letter-spacing: 3px;
+}
+.container{
+    margin: 0 auto;
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.h1-box{
+    text-align: center;
+    padding: 30px;
+    margin: 2px 0.7px;
+    width: 50px;
+}
+.hex{
+    display: flex;
+    justify-content: center;
+}
+.even{
+    background-color: #8FF7A7;
+}
+.odd{
+    background-color: #F44E3F;
+}
+.prime{
+    background-color: #F7FE72;
+}
+.bar{
+    margin-right: auto;
+    margin-top: 20px;
+    height: 30px;
+    background-color: #FFE74C;
+}
+.h1-label{
+    font-size: 16px;
+    width: 120px;
+}
+.visual-bar{
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
