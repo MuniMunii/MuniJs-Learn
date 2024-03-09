@@ -1,0 +1,33 @@
+body{
+    background-color: rgb(116, 113, 113);
+}
+.world{
+    margin: 0 auto;
+}
+.container{
+    background-color: white;
+    padding: 10px 15px;
+    width: 500px;
+    height: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.img-country{
+    width: 170px;
+    height: 100px;
+    min-height: 100px;
+    max-height: 100px;
+    margin: 0 auto;
+}
+.country-label{
+    font-size: 20px;
+    text-align: center;
+}
+.button-world{
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    padding: 3px 15px;
+    background-color: rgb(136, 228, 76);
+}
