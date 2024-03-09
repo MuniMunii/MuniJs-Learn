@@ -1,0 +1,31 @@
+.winter{
+    background-color: #70E4EF;
+}
+.winter span{
+    color: antiquewhite;
+}
+.summer{
+    background-color: #F2CD5D;
+}
+.summer span{
+    color: #DEA54B;
+}
+.spring{
+    background-color: #20BF55;
+}
+.spring span{
+    color: #A7E8BD;
+}
+.autumn{
+    background-color: #CC5803;
+}
+.autumn span{
+    color: #F7B05B;
+}
+.PM{
+    background-color: rgb(19, 16, 16);
+    color: white;
+}
+.AM{
+    background-color: rgb(255, 231, 95);
+}
