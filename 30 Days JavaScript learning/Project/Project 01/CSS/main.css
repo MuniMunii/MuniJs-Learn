@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+    --DarkPink:#fb6f92;
+    --LightPink:#ffe5ec;
+    --MedPink:#ffb3c6;
+    --DarkMossGreen:#2f3e46;
+}
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--DarkMossGreen);
+    color: var(--LightPink);
+}
+.whole-body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.navbar-class{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 0 0.625em;
+    height: 100%;
+    width: 150px;
+}
+.nav-link{
+    text-wrap: nowrap;
+}
+.profile ,.about{
+    margin: 0 auto;
+    font-family:"Montserrat", sans-serif;
+    width: 85%;
+}
+.profile{
+    align-self: center;
+}
+.about{
+    align-self: flex-start;
+}
+.hello{
+    font-size: 4.375rem;
+}
+.profile h1{
+    margin: 5px 0;
+}
+.arrow-right{
+    margin-left: 1rem;
+    animation: forward;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes forward {
+    0%{
+        margin-left: 1rem;
+    }
+    100%{
+        margin-left: 2rem;
+    }
+}
+.link-about{
+    display: flex;
+    text-decoration: none;
+    color: var(--LightPink);
+    background-image: linear-gradient(90deg,#ffe5ec,#fb6f92);
+    background-repeat: no-repeat;
+    background-size: 0 3px;
+    background-position: center bottom;
+    transition: background-size 0.3s ease;
+}
+.link-about:hover{
+background-size: 100% 3px;
+}
+.menu-bar{
+    font-size: 20px;
+    border: none;
+    background-color: none;
+    margin: 0;
+}
+.navbar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.navbar-list{
+    display: flex;
+    flex-direction: column;
+}
+.navbar-list a{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    margin: 5px 0;
+    color: var(--LightPink);
+    text-decoration: none;
+    background-image: linear-gradient(90deg,#ffe5ec,#fb6f92);
+    background-repeat: no-repeat;
+    background-size: 0 3px;
+    background-position: left bottom;
+    transition: background-size 0.3s ease;
+}
+.navbar-list a:hover{
+    background-size: 100% 3px;
+}
+.nav-link.hide{
+    transition: all 0.3s ease;
+}
+.hide{
+    display: none;
+}
+
+@media screen and (max-width:700px) {
+    .hide{
+        display: block;
+        visibility: hidden;
+    }
+    .whole-body{
+        flex-direction: column;
+    }
+    .navbar-class{
+        margin: 0 auto;
+        height: auto;
+        flex-direction: column;
+    }
+    .about h1,.hello{
+        margin: 0;
+        font-size: 2rem;
+    }
+    .navbar-list a{
+        margin: 0 5px;
+    }
+    .navbar-list{
+        flex-direction: row;
+        display: flex;
+    }
+}
