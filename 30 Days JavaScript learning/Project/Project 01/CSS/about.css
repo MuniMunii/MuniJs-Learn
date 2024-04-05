@@ -4,10 +4,15 @@ html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    min-height: 100vh;
+    display: flex;
+    position: relative;
+    height: 100vh;
   }
 .about{
     width: 75%;
+}
+.sticky{
+    position: fixed;
 }
 .timeline{
     list-style: none;
