@@ -1,0 +1,25 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    background-color: #999999;
+}
+.input-box{
+    padding-left: 7px;
+    height: 1.75em;
+    width: 10em;
+    border-radius: 5px;
+    border: black 1px solid;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
