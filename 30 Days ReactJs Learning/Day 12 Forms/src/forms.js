@@ -28,64 +28,66 @@ class FormsExample extends React.Component {
   state = {
     isTyping: false,
     currentName: null,
+    error: "",
     firstName: {
-      firstNameValue: "",
+      Value: "",
       isValid: false,
     },
     lastName: {
-      lastNameValue: "",
+      Value: "",
       isValid: false,
       // error:"Must longer than 3 characters and shorter than 13 characters"
     },
     email: {
-      emailValue: "",
+      Value: "",
       isValid: false,
       // error:"Email is invalid"
     },
     country: {
-      countryValue: "",
+      Value: "",
       isValid: false,
       // error:"Select the Country"
     },
     tel: {
-      telValue: "",
+      Value: "",
       isValid: false,
       // error:"Must 11 Number"
     },
     dateOfBirth: {
-      dateOfBirthValue: "",
+      Value: "",
       isValid: false,
       // error:"Input the correct date"
     },
     favoriteColor: {
-      colorValue: "",
+      Value: "",
       isValid: false,
       // error:"Cannot include number"
     },
     weight: {
-      weightValue: "",
+      Value: "",
       isValid: false,
       // error:"Cannot be longer than 3 number"
     },
     gender: {
-      genderValue: "",
+      Value: "",
       isValid: false,
       // error:"Choose the gender"
     },
     file: {
-      fileValue: "",
+      Value: "",
       isValid: false,
     },
     bio: {
-      bioValue: "",
+      Value: "",
       isValid: false,
       // error:"must be longer than 20 characters (Max 200 characters)"
     },
     skills: {
+      list:{ 
       html: false,
       css: false,
-      javascript: false,
-      // error:"At least choose one skill"
+      javascript: false,},
+      Value: [],
     },
   };
   handleChange = (e) => {
@@ -107,7 +109,7 @@ class FormsExample extends React.Component {
           const NamePattern = /^[a-zA-Z]{3,12}$/;
           this.setState((prevState) => ({
             [name]: {
-              [name + "Value"]: value,
+              Value: value,
               isValid: value.match(NamePattern) !== null,
             },
             isTyping,
@@ -118,44 +120,48 @@ class FormsExample extends React.Component {
         const EmailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
         this.setState((prevState) => ({
           [name]: {
-            [name + "Value"]: value,
+            Value: value,
             isValid: value.match(EmailPattern) !== null,
           },
           isTyping,
           currentName: name,
         }));
       } else if (type === "checkbox") {
-        this.setState({
-          skills: { ...this.state.skills, [name]: checked },
+        this.setState((prevState)=>{
+        const UpdatedSkills = { ...this.state.skills.list, [name]: checked };
+        const UpdatedValues = Object.entries(UpdatedSkills)
+        .filter(([key, value]) => value)
+        .map(([key]) => key);
+          return { 
+          skills:{list: UpdatedSkills,
+          Value: [UpdatedValues],
+          }}
         });
       } else if (type === "number") {
         if (name === "tel") {
           const TelephonePattern = /^[0-9]{11,11}$/;
-          if(value.length<=11){
+          if (value.length <= 11) {
             this.setState((prevState) => ({
               [name]: {
-                [name + "Value"]: value,
+                Value: value,
                 isValid: value.match(TelephonePattern) !== null,
               },
               isTyping,
               currentName: name,
             }));
           }
-        
         } else if (name === "weight") {
           const WeightPattern = /^[1-9][0-9]{1,2}$/;
-          if(value.length<=3){
+          if (value.length <= 3) {
             this.setState((prevState) => ({
               [name]: {
-                [name + "Value"]: value.replace(/\D+/g, ''),
+                Value: value.replace(/\D+/g, ""),
                 isValid: value.match(WeightPattern) !== null,
               },
               isTyping,
               currentName: name,
             }));
           }
-            
-            
         }
       } else if (type === "file") {
         console.log("File type", e.target.files[0].name);
@@ -168,7 +174,7 @@ class FormsExample extends React.Component {
             console.log(prevState),
             {
               [name]: {
-                [name + "Value"]: value,
+                Value: value,
                 isValid: true,
               },
             }
@@ -195,22 +201,37 @@ class FormsExample extends React.Component {
       skills,
     } = this.state;
     const FormatedSkills = Object.keys(skills).filter((skill) => skills[skill]);
-    const FormattedWeight = "Kg " + weight.weightValue;
+    const FormattedWeight = "Kg " + weight.Value;
     const Data = {
-      firstName: firstName.firstNameValue.toUpperCase(),
-      lastName: lastName.lastNameValue.toUpperCase(),
-      email: email.emailValue,
-      tel: tel.telValue,
-      dateOfBirth: dateOfBirth.dateOfBirthValue,
-      favoriteColor: favoriteColor.colorValue,
+      firstName: firstName.Value.toUpperCase(),
+      lastName: lastName.Value.toUpperCase(),
+      email: email.Value,
+      tel: tel.Value,
+      dateOfBirth: dateOfBirth.Value,
+      favoriteColor: favoriteColor.Value.toUpperCase(),
       weight: FormattedWeight,
-      country: country.countryValue,
-      gender: gender.genderValue,
-      bio: bio.bioValue,
+      country: country.Value,
+      gender: gender.Value,
+      bio: bio.Value,
       file,
       skills: FormatedSkills,
     };
-    console.table(Data);
+    if (
+      firstName.isValid &&
+      lastName.isValid &&
+      email.isValid &&
+      tel.isValid &&
+      dateOfBirth.isValid &&
+      favoriteColor.isValid &&
+      weight.isValid &&
+      gender.isValid &&
+      bio.isValid
+    ) {
+      console.table(Data);
+    } else {
+      this.setState({ error: "Invalid Form Must input in the correct way" });
+      console.error("Invalid Form");
+    }
   };
   render() {
     const {
@@ -225,7 +246,6 @@ class FormsExample extends React.Component {
       gender,
       bio,
       file,
-      error,
       isTyping,
       currentName,
     } = this.state;
@@ -234,6 +254,13 @@ class FormsExample extends React.Component {
         {label}
       </option>
     ));
+    const numberInputOnWheelPreventChange = (e) => {
+      e.target.blur()
+      e.stopPropagation()
+      setTimeout(() => {
+        e.target.focus()
+      }, 0)
+    }
     return (
       <div className="container">
         <h1>test</h1>
@@ -244,7 +271,7 @@ class FormsExample extends React.Component {
               <input
                 type="text"
                 name="firstName"
-                value={firstName.firstNameValue}
+                value={firstName.Value}
                 onChange={this.handleChange}
                 placeholder="First Name"
                 className="input-box"
@@ -262,8 +289,8 @@ class FormsExample extends React.Component {
               <input
                 type="text"
                 name="lastName"
-                value={lastName.lastNameValue}
-                placeholder="First Name"
+                value={lastName.Value}
+                placeholder="Last Name"
                 onChange={this.handleChange}
                 className="input-box"
               ></input>
@@ -280,16 +307,14 @@ class FormsExample extends React.Component {
               <input
                 type="email"
                 name="email"
-                value={email.emailValue}
+                value={email.Value}
                 placeholder="Email"
                 onChange={this.handleChange}
                 className="input-box"
               ></input>
             </div>
             {isTyping && !email.isValid && currentName === "email" && (
-              <p>
-                email is invalid
-              </p>
+              <p>email is invalid</p>
             )}
           </div>
           <div>
@@ -298,17 +323,16 @@ class FormsExample extends React.Component {
               <input
                 type="number"
                 name="tel"
-                value={Math.abs(tel.telValue)}
+                value={Math.abs(tel.Value)}
                 placeholder="Telephone Number"
                 onChange={this.handleChange}
                 className="input-box"
                 min={0}
+                onWheel={numberInputOnWheelPreventChange}
               ></input>
             </div>
             {isTyping && !tel.isValid && currentName === "tel" && (
-              <p>
-                Must 11 number
-              </p>
+              <p>Must 11 number</p>
             )}
           </div>
           <div>
@@ -317,16 +341,14 @@ class FormsExample extends React.Component {
               <input
                 type="date"
                 name="dateOfBirth"
-                value={dateOfBirth.dateOfBirthValue}
+                value={dateOfBirth.Value}
                 placeholder="Date Of Birth"
                 onChange={this.handleChange}
                 className="input-box"
               ></input>
             </div>
             {!dateOfBirth.isValid && currentName === "date" && (
-              <p>
-                date is invalid
-              </p>
+              <p>date is invalid</p>
             )}
           </div>
           <div>
@@ -335,17 +357,20 @@ class FormsExample extends React.Component {
               <input
                 type="text"
                 name="favoriteColor"
-                value={favoriteColor.colorValue}
+                value={favoriteColor.Value}
                 placeholder="favorite color"
                 onChange={this.handleChange}
                 className="input-box"
               ></input>
             </div>
-            {isTyping && !favoriteColor.isValid && currentName === "favoriteColor" && (
-              <p>
-                Must longer than 3 characters and shorter than 13 characters and no number
-              </p>
-            )}
+            {isTyping &&
+              !favoriteColor.isValid &&
+              currentName === "favoriteColor" && (
+                <p>
+                  Must longer than 3 characters and shorter than 13 characters
+                  and no number
+                </p>
+              )}
           </div>
           <div>
             <div className="row">
@@ -353,18 +378,19 @@ class FormsExample extends React.Component {
               <input
                 type="number"
                 name="weight"
-                value={weight.weightValue}
+                value={weight.Value}
                 placeholder="weight"
                 onChange={this.handleChange}
                 className="input-box"
                 min={0}
-                onInput={(e) => {e.target.value = Math.abs(e.target.value);}}
+                onInput={(e) => {
+                  e.target.value = Math.abs(e.target.value);
+                }}
+                onWheel={numberInputOnWheelPreventChange}
               ></input>
             </div>
-            {isTyping && !weight.isValid && currentName === "weight"&& (
-              <p>
-                min 2 number
-              </p>
+            {isTyping && !weight.isValid && currentName === "weight" && (
+              <p>min 2 number</p>
             )}
           </div>
           <div>
@@ -377,7 +403,7 @@ class FormsExample extends React.Component {
                   name="gender"
                   value="Male"
                   onChange={this.handleChange}
-                  checked={gender.genderValue === "Male"}
+                  checked={gender.Value === "Male"}
                 ></input>
               </div>
               <div>
@@ -387,7 +413,7 @@ class FormsExample extends React.Component {
                   name="gender"
                   value="Female"
                   onChange={this.handleChange}
-                  checked={gender.genderValue === "Female"}
+                  checked={gender.Value === "Female"}
                 ></input>
               </div>
             </div>
@@ -402,7 +428,7 @@ class FormsExample extends React.Component {
               <label htmlFor="country">Country:</label>
               <select
                 name="country"
-                value={country.countryValue}
+                value={country.Value}
                 onChange={this.handleChange}
               >
                 {SelectedCountry}
@@ -454,7 +480,7 @@ class FormsExample extends React.Component {
               <textarea
                 type="text"
                 name="bio"
-                value={bio.bioValue}
+                value={bio.Value}
                 onChange={this.handleChange}
                 placeholder="Biodata"
                 className="TextArea-box"
@@ -463,12 +489,9 @@ class FormsExample extends React.Component {
               />
             </div>
             {isTyping && !bio.isValid && currentName === "bio" && (
-              <p>
-                Must longer than 3 characters Max 100 letter
-              </p>
+              <p>Must longer than 3 characters Max 100 letter</p>
             )}
           </div>
-
           <div>
             <button>Submit</button>
           </div>
