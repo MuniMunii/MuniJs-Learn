@@ -200,7 +200,7 @@ class FormsExample extends React.Component {
       file,
       skills,
     } = this.state;
-    const FormatedSkills = Object.keys(skills).filter((skill) => skills[skill]);
+    const FormatedSkills = Object.keys(skills.list).filter((skill) => skills.list[skill]);
     const FormattedWeight = "Kg " + weight.Value;
     const Data = {
       firstName: firstName.Value.toUpperCase(),
