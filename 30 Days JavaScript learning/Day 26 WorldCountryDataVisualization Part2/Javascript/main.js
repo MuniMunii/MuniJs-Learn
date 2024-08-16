@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded',function(){
-    let AllCountries=countries.length
-    let getTotalCountries=document.querySelector('.Total-Country')
-    let getCountry=document.querySelector('.country')
+    const AllCountries=countries.length
+    const getTotalCountries=document.querySelector('.Total-Country')
+    const getCountry=document.querySelector('.country')
     getTotalCountries.innerHTML=AllCountries
-    let getSearchInput=document.querySelector('.input-Class')
-    let getAnyButton=document.querySelector('.any')
-    let getStartWithButton=document.querySelector('.start')
-    let getSortWeb=document.querySelector('.sort')
-    let getTotal=document.querySelector('.Total')
+    const getSearchInput=document.querySelector('.input-Class')
+    const getAnyButton=document.querySelector('.any')
+    const getStartWithButton=document.querySelector('.start')
+    const getSortWeb=document.querySelector('.sort')
+    const getTotal=document.querySelector('.Total')
     // Buat display awalan
     countries.forEach(countries=>{
         let getCountries=CreateCountryDisplay(countries)
@@ -65,25 +65,27 @@ document.addEventListener('DOMContentLoaded',function(){
         let Result=getTotal.innerHTML=Value ? `Countries That Containing This Letter ${Value} Are ${filterCountry.length}`:''
         Display(filterCountry,Result)
     }
-    let isButtonActive=false
+    const getTestType=document.querySelector('.Test-type')
+    let startType=false
+    let anyType=true
     function ToggleActiveButton(){
-        isButtonActive = true
-        StartWith()
+        startType = !startType
+        anyType = !anyType
+        // console.log(startType);
+        // getTestType.innerHTML=`${startType} anyType ${anyType}`
     }
-    console.log('Event listener registered');
     getSortWeb.addEventListener('click', function(){
-        isButtonActive=false
         SortWeb()
     });
     getStartWithButton.addEventListener('click', ToggleActiveButton);
-    getAnyButton.addEventListener('click', Anyword);
-    getSearchInput.addEventListener('input',function (){
-        if (isButtonActive) {
+    getAnyButton.addEventListener('click', ToggleActiveButton);
+    getSearchInput.addEventListener('input',function(){
+        if (startType && !anyType) {
             StartWith()
-        }else{
+        }
+        else{
             Anyword()
         }
     })
-    getSearchInput.addEventListener('input', Anyword);
 })
 
