@@ -1,0 +1,12 @@
+.container{
+    text-align: center;
+    width: 100%;
+    height: 50%;
+}
+.circle{
+    border:white 1px solid;
+    padding: 1em;
+    border-radius: 100%;
+    color:green;
+    font-weight: bolder;
+}
